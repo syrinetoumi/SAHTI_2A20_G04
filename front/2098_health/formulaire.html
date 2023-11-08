@@ -1,28 +1,28 @@
 
     <link rel="stylesheet" href="css/form_style.css">
-    
+
     <body>
         <div id="container">
            <header>Nouveau compte</header>
-           <form method="post">
+           <form method="post" name="f" onsubmit="verifierChamps(event) ">
               <fieldset>
                  <br/>
-                 <input type="text" name="username" id="username" placeholder="Nom" required autofocus>
+                 <input type="text" name="username" id="nom" placeholder="Nom" >
                  <br/><br/>
-                 <input type="text" name="username" id="pre" placeholder="Prenom" required autofocus>
+                 <input type="text" name="username" id="pre" placeholder="Prenom"  >
                  <br/><br/>
-                 <input type="email" name="email" id="email" placeholder="E-mail" required>
+                 <input type="email" name="email" id="email" placeholder="E-mail"  >
                  <br/><br/>
-                 <input type="tel" name="tel" id="tel" placeholder="Telephone" required>
+                 <input type="tel" name="tel" id="tel" placeholder="Telephone"  >
                  <br/><br/>
-                 <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                 <input type="password" name="password" id="password" placeholder="Mot de passe"  >
                  <br/><br/>
-                 <input type="password" name="confirm-password" id="confirm-password" placeholder="confirmer mot de passe" required>
+                 <input type="password" name="confirm-password" id="motdepasse" placeholder="confirmer mot de passe"  >
                  <br/> <br/> <br/>
                  <input type="radio" name="med">Medecin
-                 <input type="radio" name="med">Patient<br>
-                 <input type="radio" name="med">Coach
-                 <input type="radio" name="med">Chauffeur<br><br>
+                 <input type="radio" name="pat">Patient<br>
+                 <input type="radio" name="coa">Coach
+                 <input type="radio" name="chauff">Chauffeur<br><br>
 
                  <label for="submit"></label>
                  <input type="submit" name="submit" id="submit" value="Enregistrer">
@@ -30,3 +30,4 @@
            </form>
         </div>
      </body>
+     <script src="js/controle.js"></script>
