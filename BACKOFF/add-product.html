@@ -5,14 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Product - Dashboard Admin Template</title>
-    <!--
-
-    Template 2108 Dashboard
-
-	http://www.tooplate.com/view/2108-dashboard
-
-    -->
+    <title>ajouter un utilisateur</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="css/fontawesome.min.css">
@@ -31,7 +24,7 @@
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="index.html">
                         <div class="logo">
-                            <img src="C:\Users\Acer\Desktop\2108_dashboard\img/logo.png" class="imglogo" alt="">
+                            <img src="C:\Users\1cyri\OneDrive\Bureau\projet\logo.png" class="imglogo" alt="">
                        </div>
                     </a>
                     <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -94,47 +87,43 @@
                 <div class="bg-white tm-block">
                     <div class="row">
                         <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">Add Product</h2>
+                            <h2 class="tm-block-title d-inline-block">Ajouter un utilisateur</h2>
                         </div>
                     </div>
                     <div class="row mt-4 tm-edit-product-row">
                         <div class="col-xl-7 col-lg-7 col-md-12">
                             <form action="" class="tm-edit-product-form">
                                 <div class="input-group mb-3">
-                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Product
-                                        Name
+                                    <label for="name" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="lab">
+                                        Nom
                                     </label>
                                     <input id="name" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="description" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 mb-2">Description</label>
-                                    <textarea class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" rows="3" required></textarea>
-                                </div>
-                                <div class="input-group mb-3">
-                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Category</label>
+                                    <label for="category" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="lab">Role</label>
                                     <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="category">
-                                        <option selected>Select one</option>
-                                        <option value="1">Cras efficitur lacus</option>
-                                        <option value="2">Pellentesque molestie</option>
-                                        <option value="3">Sed feugiat nulla</option>
+                                        <option selected id="lab">admin</option>
+                                        <option value="1" id="lab1">medecin</option>
+                                        <option value="2" id="lab1">patient</option>
+                                        <option value="3" id="lab1">coach</option>
+                                        <option value="4" id="lab1">chauffeur</option>
                                     </select>
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Expire
-                                        Date
+                                    <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="lab">Email
                                     </label>
-                                    <input id="expire_date" name="expire_date" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                    <input id="email" name="email" type="email" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                         data-large-mode="true">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <label for="stock" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Units In
-                                        Stock
+                                    <label for="stock" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label" id="lab">Mot de passe
+                                        
                                     </label>
-                                    <input id="stock" name="stock" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
+                                    <input id="pass" name="pass" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                        <button type="submit" class="btn btn-primary">Add
+                                        <button type="submit" class="btn btn-primary">ajouter
                                         </button>
                                     </div>
                                 </div>
@@ -146,7 +135,7 @@
                             </div>
                             <div class="custom-file mt-3 mb-3">
                                 <input id="fileInput" type="file" style="display:none;" />
-                                <input type="button" class="btn btn-primary d-block mx-auto" value="Upload ..." onclick="document.getElementById('fileInput').click();"
+                                <input type="button" class="btn btn-primary d-block mx-auto" value="telecharger..." onclick="document.getElementById('fileInput').click();"
                                 />
                             </div>
                         </div>

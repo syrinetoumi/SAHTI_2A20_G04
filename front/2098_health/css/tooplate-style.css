@@ -15,6 +15,7 @@ http://www.tooplate.com/view/2098-health
   }
 
 
+
   /*---------------------------------------
      TYPOGRAPHY              
   -----------------------------------------*/
@@ -474,16 +475,16 @@ http://www.tooplate.com/view/2098-health
   }
 
   .slider .item-first {
-    background-image: url(../images/slider1.jpg);
+    background-image: url(../images/bg1.png);
   }
 
   .slider .item-second {
-    background-image: url(../images/slider2.jpg);
+    background-image: url(../images/bbg22.png);
 
   }
 
   .slider .item-third {
-    background-image: url(../images/slider3.jpg);
+    background-image: url(../images/bb3.png);
   }
 
 
@@ -492,13 +493,17 @@ http://www.tooplate.com/view/2098-health
   -----------------------------------------*/
 
   #about {
-    background: url("C:\Users\1cyri\OneDrive\Bureau\projet\front\2098_health\images\about-bg.jpg") no-repeat top center;
+    background: url("C:\Users\1cyri\OneDrive\Bureau\projet\front\2098_health\images\about-bg1.jpg") no-repeat top center;
     background-size: cover;
     padding-top: 150px;
     padding-bottom: 150px;
   }
   #acc{
     color: #1c1c1c;
+  }
+  #acc1{
+    color: #1c1c1c;
+    font-size: 20px;
   }
 
   .profile img,
