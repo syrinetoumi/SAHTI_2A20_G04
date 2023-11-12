@@ -5,7 +5,292 @@ Template 2098 Health
 http://www.tooplate.com/view/2098-health
 
 */
+.tm-logout-icon {
+  font-size: 1.5em;
+}
 
+.tm-bg-black {
+  background-color: rgba(0, 0, 0, 0.252);
+}
+
+.tm-mt-big {
+  margin-top: 70px;
+}
+
+.tm-mt-small {
+  margin-top: 20px;
+}
+
+.tm-block {
+  padding: 50px 45px;
+}
+
+.tm-block-title {
+  font-size: 1.4rem;
+  color: rgb(19, 19, 19);
+  margin-bottom: 30px;
+}
+.tm-content-row {
+  justify-content: space-between;
+  margin-left: -20px;
+  margin-right: -20px; /* To offset col padding */
+}
+
+.tm-col {
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-bottom: 50px;
+}
+
+.tm-col-big {
+  width: 39%;
+}
+
+.tm-col-small {
+  width: 21.95%;
+}
+
+.tm-link-black {
+  color: black;
+}
+
+.tm-link-black:hover,
+.tm-link-black:focus {
+  color:#075cfa
+}
+
+ol {
+  margin-bottom: 0;
+}
+
+.tm-list-group {
+  counter-reset: myOrderedListItemsCounter;
+  padding-left: 0;
+}
+
+.tm-list-group > li {
+  list-style-type: none;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 8px;
+  color:white;
+}
+
+.tm-list-group-pad-big > li {
+  padding: 20px;
+}
+
+.tm-list-group > li:hover {
+  color:#b1fa07;
+}
+
+.tm-list-group-alternate-color > li:nth-child(odd) {
+  background-color:#1c1c1c;
+  color: #b1fa07;
+}
+
+.tm-list-group > li:before {
+  counter-increment: myOrderedListItemsCounter;
+  content: counter(myOrderedListItemsCounter) ".";
+  margin-right: 0.5em;
+}
+
+.tm-list {
+  padding-left: 30px;
+}
+
+.tm-list > li {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  margin-bottom: 23px;
+  padding: 19px 18px;
+  border-radius: 0;
+  height: 50px;
+}
+
+label {
+  margin-bottom: 18px;
+}
+
+.btn {
+  border-radius: 0;
+  padding: 13px 28px;
+  transition: all 0.2s ease;
+  max-width: 100%;
+  color: #000000;
+}
+#mis{
+  color: #b1fa07;
+  background-color: #252525;
+}
+.btn-small {
+  padding: 10px 24px;
+}
+
+.btn-primary {
+  background-color: transparent;
+  color: rgb(9, 9, 9);
+  border-color: #999999;
+  padding: 13px 28px;
+}
+#for{
+  background-color:#393939;
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  color: black;
+  background-color: #cdd4da;
+  border-color: #999999;
+}
+.btn-danger {
+  color: #9f1321;
+  background-color: transparent;
+  border-color: #9f1321;
+}
+
+.btn-danger:hover {
+  color: #9f1321;
+  background-color: rgba(159, 19, 32, 0.27);
+  border-color: #9f1321;
+}
+
+.custom-file-input {
+  cursor: pointer;
+}
+
+.custom-file-label {
+  border-radius: 0;
+}
+
+.tm-btn-right {
+  text-align: right;
+}
+
+.table td,
+.table th {
+  padding: 20px 24px;
+}
+
+.table-hover tbody tr:hover {
+  background-color: white;
+  color: #3aabd0;
+}
+
+.tm-bg-gray {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tm-table-striped-even.table-striped tbody tr:nth-of-type(even) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.tm-table-striped-even.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgb(192, 191, 191);
+}
+
+.tm-table-mt {
+  margin-top: 66px;
+}
+
+.tm-pagination {
+  justify-content: flex-end;
+}
+
+.tm-pagination-label {
+  padding-bottom: 15px;
+  padding-right: 15px;
+  display: inline-block;
+}
+#fileInput{
+width: 24px;
+height: 24px;}
+
+.tm-table-actions-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tm-table-actions-col-right {
+  text-align: right;
+}
+option , #category{
+  color: #b1fa07;
+  background-color: #252525;
+}
+input[type="text"]{
+  color: #b1fa07;
+  background-color: #252525;
+
+}
+input[type="number"]{
+  color: #b1fa07;
+  background-color: #252525;
+}
+
+input[type="tel"]{
+  color: #b1fa07;
+  background-color: #252525;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #699f13;
+}
+input[type="checkbox"]:focus {
+  outline: 0 none;
+  box-shadow: none;
+}
+
+.tm-trash-icon {
+  color: #6e6c6c;
+  cursor: pointer;
+}
+
+.tm-trash-icon:hover {
+  color: #9f1321;
+}
+
+.tm-trash-icon-cell {
+  width: 15px;
+}
+
+footer {
+  margin-bottom: 35px;
+}
+
+.custom-select {
+  height: 50px;
+  border-radius: 0;
+}
+.tm-btn-right {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.tm-product-img-dummy {
+  max-width: 100%;
+  width: 240px;
+  height: 240px;
+  border: 1px solid #cccccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c8c8c8;
+}
+
+.tm-login-col {
+  max-width: 600px;
+}
+
+/*--------------------------------------------
+-----------------------*/
   @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600');
 
   body {
@@ -46,6 +331,9 @@ http://www.tooplate.com/view/2098-health
   h1 {
     color: #252525;
     font-size: 5em;
+  }
+  #mod{
+    color:#b1fa07;
   }
 
   h2 {
@@ -793,7 +1081,10 @@ http://www.tooplate.com/view/2098-health
     color: #393939;
     font-weight: 500;
   }
-
+input{
+  height: 5px;
+  width: 20px;
+}
   #appointment .form-control {
     background: rgba(0,0,1,.075);
     border: none;
@@ -809,7 +1100,9 @@ http://www.tooplate.com/view/2098-health
   #appointment select {
     height: 45px;
   }
-
+  select{
+    color: #000000;
+  }
   #appointment button#cf-submit {
     background: #b1fa07;
     color: #1c1c1c;
@@ -1032,7 +1325,7 @@ http://www.tooplate.com/view/2098-health
       border-color: transparent;
     }
     .navbar-default .navbar-nav li.appointment-btn {
-      margin-left: 15px;
+      margin-left: 20px;
     }
     .navbar-default .navbar-nav li a {
       display: inline-block;
