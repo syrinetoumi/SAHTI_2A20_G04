@@ -228,7 +228,10 @@ option , #category{
 input[type="text"]{
   color: #b1fa07;
   background-color: #252525;
-
+}
+input[type="password"]{
+  color: #b1fa07;
+  background-color: #252525;
 }
 input[type="number"]{
   color: #b1fa07;
