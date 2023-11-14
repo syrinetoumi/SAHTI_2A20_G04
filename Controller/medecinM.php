@@ -35,7 +35,7 @@ class medecinM
     }
 
 
-    function addmedecin($joueur)
+    function addmedecin($medecin)
     {
         $sql = "INSERT INTO medecin  
         VALUES (NULL, :nom_med,:prenom_med,:tel_med, :cin_med,:e_mail_med,:specialite_med,:mdp_med)";

@@ -6,7 +6,7 @@ include '../Model/medecin.php';
 $error = "";
 
 // create client
-$joueur = null;
+$medecin = null;
 
 // create an instance of the controller
 $medecinM = new medecinM();
@@ -44,7 +44,7 @@ if (
 
 
         );
-        $joueurC->addJoueur($medecin);
+        $medecinM->addmedecin($medecin);
         header('Location:listmed.php');
     } else
         $error = "Missing information";

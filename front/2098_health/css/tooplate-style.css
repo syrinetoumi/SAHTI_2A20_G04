@@ -5,14 +5,28 @@ Template 2098 Health
 http://www.tooplate.com/view/2098-health
 
 */
+#or{
+  color:#3b5998;
+
+}
 .tm-logout-icon {
   font-size: 1.5em;
+}
+table{
+  caption-side: bottom;
+}
+th, td{
+  border: 1px solid black;
+  padding: 10px;
+}
+caption{
+  background-color:#252525
+  font-weight: bold;
 }
 
 .tm-bg-black {
   background-color: rgba(0, 0, 0, 0.252);
 }
-
 .tm-mt-big {
   margin-top: 70px;
 }
