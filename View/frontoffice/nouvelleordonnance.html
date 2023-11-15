@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Health Template - News Page</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="Tooplate">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/magnific-popup.css">
+
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/animate.css">
+
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+     <link rel="stylesheet" href="css/form_style.css"> 
+     <link rel="stylesheet" href="css/tooplate-style.css">
+
+   
+</head>
+<body background="C:\Users\Acer\Desktop\MVC\Assets\pharmacien.jpg"  id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+    <!-- PRE LOADER -->
+    <section class="preloader">
+         <div class="spinner">
+
+              <span class="spinner-rotate"></span>
+              
+         </div>
+    </section>
+
+
+    
+    <section class="navbar navbar-default navbar-static-top" role="navigation">
+         <div class="container">
+
+             <div class="navbar-header">
+                   <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon icon-bar"></span>
+                        <span class="icon icon-bar"></span>
+                        <span class="icon icon-bar"></span>
+                   </button>
+                   <div class="logo">
+                        <img src="images/logo.png" class="imglogo" alt="">
+                   </div>
+              </div>
+
+              <div class="collapse navbar-collapse">
+                   <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#footer" class="smoothScroll">Contact</a></li>
+                        <li class="appointment-btn"><a href="indexmedecin.html">Acceuil</a></li>
+
+                   </ul>
+              </div>
+
+         </div>
+    </section>
+    <section class="ordonnance" >
+        <form id="form">
+        <center><table class="dataTable" id="medicationTable">
+            <thead>
+                <tr class="col1">
+                    <th>N°</th>
+                    <th>Nom du médicament</th>
+                    <th>Dosages</th>
+                    <th>Durée du traitement</th>
+                    <th>Remarques</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td></td>
+                  <td><input type="text" name="medicationName[]" id="nomMed "required></td>
+                  <td><input type="text" name="Dosages[]" id="dosage" required></td>
+                  <td><input type="text" name="Durée[]" id="durée" required></td>
+                  <td><input type="text" name="Remarques[]" id="rq" ></td>
+                    <td>
+                        <button class="buttonaction" name="Supprimer[]">Supp</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><span id="erreurNomMed"></span></td>
+                    <td><span id="erreurDosage"></span></td>
+                    <td><span id="erreurDurée"></span></td>
+                    <td><span id="erreurRq"></span></td>
+                    <td></td>
+                </tr>
+            </tbody>
+         </table></center>
+         <button type="button" id="addMedication" class="bouton">Ajouter un médicament</button>
+         <br><br><br><br><br>
+         <center>
+        <table class="dataTable" id="medicationTable">
+            <tr class="col1">
+                <th>Entrez l'id du patient :</th>
+                <th><input type="text" id="idpat"></th>
+                <th>Diagnostic :</th>
+                <th><input type="text" id="diag" required></th>
+            </tr>
+            <tr>
+               <td></td>
+               <td><span id="erreurIdpat"></span></td>
+               <td><span id="erreurDiag"></span></td>
+               <td></td>
+           </tr>
+        </table>
+    </center>
+         </form>
+         
+         
+         <button type="submit" class="bouton">Créer l'ordonnance</button>
+        
+         
+    </section>
+
+     
+
+     <!-- SCRIPTS -->
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.sticky.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
+     <script src="js/jquery.magnific-popup.min.js"></script>
+     <script src="js/magnific-popup-options.js"></script>
+     <script src="js/wow.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/custom.js"></script>
+     <script src="js/ordonnance.js"></script>
+
+</body>
+</html>
