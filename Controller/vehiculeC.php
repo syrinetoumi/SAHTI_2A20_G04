@@ -38,7 +38,7 @@ class VehiculeC
     try {
         $query = $db->prepare($sql);
         $query->execute([
-            'id' => $vehicule->getvehicule_id(),
+            //'id' => $vehicule->getvehicule_id(),
             'marque' => $vehicule->getmarque(),
             'modele' => $vehicule->getmodele(),
             'annee' => $vehicule->getannee(),
