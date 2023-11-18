@@ -1,11 +1,11 @@
 <?php
 class vehicule
 {
-    private ?int $vehicule_id= null;
+    private ?int $vehicle_id= null;
     private ?string $marque = null;
     private ?string $modele = null;
     private ?string $annee = null;
-    private ?string $planum = null;
+    private ?string $plnum = null;
 
     public function __construct($id = null, $ma, $mo, $a, $pl)
 {
@@ -13,14 +13,14 @@ class vehicule
     $this->marque = $ma;  // Fix the typo here
     $this->modele = $mo;
     $this->annee = $a;
-    $this->planum = $pl;
+    $this->plnum = $pl;
 }
 
 
 
     public function getvehicule_id()
     {
-        return $this->vehicule_id;
+        return $this->vehicle_id;
     }
 
 
@@ -64,13 +64,13 @@ class vehicule
 
     public function getplanum()
     {
-        return $this->planum;
+        return $this->plnum;
     }
 
 
-    public function seplanum($planum)
+    public function seplanum($plnum)
 {
-    $this->planum = $planum;
+    $this->planum = $plnum;
     return $this;
 }
 }

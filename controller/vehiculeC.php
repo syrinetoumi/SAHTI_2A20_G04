@@ -17,23 +17,26 @@ class VehiculeC
     }
 
     function deleteVehicule($id)
-    {
-        $sql = "DELETE FROM vehicule WHERE vehicule_id = :id";
-        $db = config::getConnexion();
-        $req = $db->prepare($sql);
-        $req->bindValue(':id', $id);
+{
+    $sql = "DELETE FROM vehicule WHERE vehicle_id = :id";
+    $db = config::getConnexion();
+    $req = $db->prepare($sql);
+    $req->bindValue(':id', $id);
 
-        try {
-            $req->execute();
-        } catch (Exception $e) {
-            die('Error:' . $e->getMessage());
-        }
+    try {
+        $req->execute();
+        // Redirect to listvehicule.php after successful deletion
+        header('Location: listvehicule.php');
+        exit; // Ensure no further code is executed after the redirection
+    } catch (Exception $e) {
+        die('Error:' . $e->getMessage());
     }
+}
 
     function ajouter($vehicule)
 {
     $sql = "INSERT INTO vehicule  
-    VALUES (:id, :marque, :modele, :annee, :planum)";
+    VALUES (:id, :marque, :modele, :annee, :plnum)";
     $db = config::getConnexion();
     try {
         $query = $db->prepare($sql);
@@ -42,7 +45,7 @@ class VehiculeC
             'marque' => $vehicule->getmarque(),
             'modele' => $vehicule->getmodele(),
             'annee' => $vehicule->getannee(),
-            'planum' => $vehicule->getplanum(),
+            'plnum' => $vehicule->getplanum(),
         ]);
     } catch (Exception $e) {
         echo 'Error: ' . $e->getMessage();
@@ -52,7 +55,7 @@ class VehiculeC
 
     function showVehicule($id)
     {
-        $sql = "SELECT * FROM vehicule WHERE vehicule_id = $id";
+        $sql = "SELECT * FROM vehicule WHERE vehicle_id = $id";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -73,21 +76,27 @@ class VehiculeC
                     marque = :marque, 
                     modele = :modele, 
                     annee = :annee, 
-                    planum = :planum
-                WHERE vehicule_id = :idVehicule'
+                    plnum = :plnum
+                WHERE vehicle_id = :idVehicule'
             );
 
             $query->execute([
-                'idVehicule' => $id,
+                'idVehicule' => $id,  // Fix the parameter name here
                 'marque' => $vehicule->getmarque(),
                 'modele' => $vehicule->getmodele(),
                 'annee' => $vehicule->getannee(),
-                'planum' => $vehicule->getplanum(),
+                'plnum' => $vehicule->getplanum(),
             ]);
 
+            // Output success message if needed
             echo $query->rowCount() . " records UPDATED successfully <br>";
+
+            // Redirect to listvehicule.php after successful update
+            header('Location: listvehicule.php');
+            exit; // Ensure no further code is executed after the redirection
         } catch (PDOException $e) {
-            $e->getMessage();
+            echo 'Error: ' . $e->getMessage();
         }
     }
 }
+?>

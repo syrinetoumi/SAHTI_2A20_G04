@@ -1,6 +1,6 @@
 <?php
-include '../../Controller/vehiculeC.php';
-include '../../model/vehicule.php';
+include '../Controller/vehiculeC.php';
+include '../model/vehicule.php';
 
 $error = "";
 
@@ -22,7 +22,7 @@ if (
         !empty($_POST["plnum"])
     ) {
         $vehicule = new Vehicule(
-            $vehicule_id,  // Fix the parameter here
+            null,//$vehicule_id,  // Fix the parameter here
             $_POST['marque'],
             $_POST['modele'],
             $_POST['annee'],
@@ -30,8 +30,7 @@ if (
         );
         
         $vehiculeC->ajouter($vehicule);
-        header('Location: listVehicules.php');
-        exit; // Ensure no further code is executed after the redirection
+        // Display a success message or perform any additional actions here
     } else {
         $error = "Missing information";
     }
@@ -54,6 +53,8 @@ if (
         <?php echo $error; ?>
     </div>
 
+    <!-- Display success message or additional content here -->
+    
     <form action="addvehicule.php" method="POST">
         <table>
             <tr>
@@ -78,9 +79,9 @@ if (
                 </td>
             </tr>
             <tr>
-                <td><label for="planum">Planum :</label></td>
+                <td><label for="plnum">Planum :</label></td>
                 <td>
-                    <input type="text" id="planum" name="planum" />
+                    <input type="text" id="plnum" name="plnum" />
                     <span id="erreurPlanum" style="color: red"></span>
                 </td>
             </tr>

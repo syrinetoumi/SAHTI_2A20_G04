@@ -1,5 +1,5 @@
 <?php
-include "../../controller/vehiculeC.php";
+include '../Controller/vehiculeC.php';
 
 $c = new VehiculeC();
 $tab = $c->listVehicule();
@@ -34,13 +34,15 @@ $tab = $c->listVehicule();
             <td><?= $vehicule['annee']; ?></td>
             <td><?= $vehicule['plnum']; ?></td>
             <td align="center">
-                <form method="POST" action="updatevehicule.php">
-                    <input type="submit" name="update" value="Update">
-                    <input type="hidden" value="<?= $vehicule['vehicule_id']; ?>" name="idVehicule">
+            <form method="POST" action="uppdatevehicule.php">
+                <input type="submit" name="update" value="Update">
+                    <input type="hidden" value="<?= $vehicule['vehicle_id']; ?>" name="idVehicule">
                 </form>
             </td>
             <td>
-                <a href="deletevehicule.php?id=<?= $vehicule['vehicule_id']; ?>">Delete</a>
+            <form method="GET" action="deletevehicule.php">
+                <a href="deletevehicule.php?id=<?= $vehicule['vehicle_id']; ?>">Delete</a>
+            </form>
             </td>
         </tr>
 
