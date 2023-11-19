@@ -1,0 +1,150 @@
+.dataTable {
+    display: block;
+    width: 80%;
+    margin: 1em 0;
+  }
+  
+  .dataTable thead, .dataTable tbody, .dataTable thead tr, .dataTable th {
+    display: block;
+  }
+  
+  .dataTable thead {
+    float: left;
+  }
+  
+  .dataTable tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+  }
+  
+  .dataTable td, .dataTable th {
+    padding: .400em;
+    line-height: 1.5em;
+    border-bottom: 1px dashed #ccc;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .dataTable th {
+    text-align: center;
+    background: #1c1c1c;
+    border-bottom: 1px dashed #aaa;
+  }
+  .dataTable td {
+    align-items: center;
+  }
+  
+  .dataTable tbody tr {
+    display: table-cell;
+  }
+  
+  .dataTable tbody td {
+    display: block;
+  }
+  
+  .dataTable tr:nth-child(odd) {
+      background: rgba(0, 0, 0, 0.07);
+  }
+  
+  @media screen and (min-width: 50em) {
+  
+    .dataTable {
+      display: table;
+    }
+    
+    .dataTable thead {
+      display: table-header-group;
+      float: none;
+    }
+    
+    .dataTable tbody {
+      display: table-row-group;
+    }
+    
+    .dataTable thead tr, .dataTable tbody tr {
+      display: table-row;
+    }
+    
+    .dataTable th, .dataTable tbody td {
+      display: table-cell;
+    }
+    
+    .dataTable td, .dataTable th {
+      width: auto;
+    }
+    
+  }
+
+  
+/*.bouton {
+    margin: 3px 0 0 20px;
+  }*/
+  
+  .bouton {
+    background: #b1fa07;
+    border-radius: 3px;
+    color: #1c1c1c;
+    font-weight: 600;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-top: 25px;
+    margin-left: 150px;
+  }
+  
+  .bouton:hover {
+    background: white;
+    color: #1c1c1c !important;
+  }
+
+  .col1{
+    color:white;
+  }
+
+  .ordonnance{
+    margin-top: 100px;
+  }
+ 
+input {
+  background: white;
+  border: 0;
+  border-left: 4px solid;
+  border-color:  #b1fa07;
+  color:#1c1c1c;
+  outline: 0;
+  border-radius: 1.2rem;
+}
+input:hover {
+    background: #1c1c1c;
+    border: 0;
+    border-left: 4px solid;
+    border-color:  #b1fa07;
+    color:white;
+    outline: 0;
+    border-radius: 1.2rem;
+  }
+
+  .imgmed{
+    width: 100px;
+    height: 80px;
+  }
+
+
+  .bouton2 {
+    background: white;
+    border-radius: 15px;
+    color: #1c1c1c;
+    font-weight: 500;
+    font-size: 30;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 25px;
+    margin-left: 150px;
+  }
+  
+  .bouton2:hover {
+    background: #b1fa07;
+    color: #1c1c1c !important;
+  }
+

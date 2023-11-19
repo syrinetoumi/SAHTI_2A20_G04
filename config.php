@@ -1,36 +1,26 @@
 <?php
-
-class config
-{
-    private static $pdo = null;
-
-    public static function getConnexion()
+    class config
     {
-        if (!isset(self::$pdo)) {
+        private static $pdo = null;
+        public static function getConnexion()
+        {
+            if (!isset(self::$pdo)) {
             try {
-                self::$pdo = new PDO(
-                    'mysql:host=localhost;dbname=projetweb1',
-                    'root',
-                    '',
-                    [
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                    ]
-                );
-                //echo "connected successfully";
+            self::$pdo = new PDO(
+            'mysql:host=localhost;dbname=e-sahti',
+            'root',
+            '',
+            [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+            ]
+            );
+            //echo "connected successfully";
             } catch (Exception $e) {
-                die('Erreur: ' . $e->getMessage());
+            die('Erreur: ' . $e->getMessage());
             }
+            }
+            return self::$pdo;
         }
-        return self::$pdo;
     }
-}
-
-
-
-
-
-
-
-
-config::getConnexion();
+?>

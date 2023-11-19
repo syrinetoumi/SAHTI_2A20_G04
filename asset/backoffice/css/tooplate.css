@@ -41,7 +41,7 @@ body {
 }
 
 body {
-  background-image: url("C:\Users\1cyri\OneDrive\Bureau\BACKOFF\img\dash-bg-01.jpg");
+  background-image: url(../img/dash-bg-01.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,11 +51,11 @@ body {
 }
 
 .bg02 {
-	background-image: url("C:\Users\1cyri\OneDrive\Bureau\projet\BACKOFF\img\dash-bg-01.jpg");
+	background-image: url(../img/dash-bg-02.jpg);
 }
 
 .bg03 {
-	background-image: url("C:\Users\1cyri\OneDrive\Bureau\BACKOFF\img\dash-bg-03.jpg");
+	background-image: url(../img/dash-bg-03.jpg);
 }
 
 a {
@@ -109,7 +109,7 @@ a:focus {
 }
 
 .tm-block {
-  padding: 50px 50px;
+  padding: 50px 45px;
 }
 
 .tm-block-title {
@@ -189,10 +189,6 @@ ol {
   counter-reset: myOrderedListItemsCounter;
   padding-left: 0;
 }
-.tt{
-  width: 200px;
-  height: 100px;
-}
 
 .tm-list-group > li {
   list-style-type: none;
@@ -238,13 +234,10 @@ ol {
 label {
   margin-bottom: 18px;
 }
-#lab{
-  color:whitesmoke;
-}
 
 .btn {
   border-radius: 0;
-  padding: 13px 3px;
+  padding: 13px 28px;
   transition: all 0.2s ease;
   max-width: 100%;
 }
@@ -497,7 +490,7 @@ footer {
     height: auto;
   }
   .tm-block {
-    padding: 3px;
+    padding: 30px;
   }
 
   .tm-table-actions-row {

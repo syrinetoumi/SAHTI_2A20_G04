@@ -1,0 +1,226 @@
+
+*,
+*::after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+button:focus {
+    outline: none;
+}
+
+p {
+    margin: 20px;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 24px;
+}
+
+a {
+    color: #222222;
+    text-decoration: none;
+    outline: none !important;
+}
+
+a,
+.btn {
+    text-decoration: none !important;
+    outline: none !important;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+ :focus {
+    outline: 0;
+}
+
+.paddind_bottom_0 {
+    padding-bottom: 0 !important;
+}
+
+.btn-custom {
+    margin-top: 20px;
+    background-color: transparent !important;
+    border: 2px solid #ddd;
+    padding: 12px 40px;
+    font-size: 16px;
+}
+
+button {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+.layout_padding {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.padding_0 {
+    padding: 0px;
+}
+.layout_border {
+    width: 100%;
+    float: left;
+    border: 0.5px solid #b1fa07;
+    margin: 20px 0px;
+}
+
+/* vagetables section start */
+
+.vagetables_section {
+    width: 100%;
+    float: left;
+}
+
+.vagetables_taital {
+    width: 100%;
+    float: left;
+    font-size: 30px;
+    color: #1c1c1c;
+    font-weight: bold;
+}
+
+.vagetables_text {
+    width: 100%;
+    float: left;
+    font-size: 16px;
+    color: #1c1c1c;
+    margin: 0px;
+}
+
+.vagetables_section_2 {
+    width: 100%;
+    float: left;
+    padding-top: 50px;
+}
+
+
+/* Zoom In #1 */
+
+.hover01 figure img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.hover01 figure:hover img {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+.column {
+    margin: 15px 0px 0;
+    padding: 0;
+}
+
+.column:last-child {
+    padding-bottom: 30px;
+}
+
+.column::after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+figure {
+    width: 230px;
+    height: 230px;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+figure:hover+span {
+    bottom: -36px;
+    opacity: 1;
+}
+
+.harshal_text {
+    width: 100%;
+    float: left;
+    text-align: center;
+    color: #333333;
+    font-size: 20px;
+    padding-right:0px ;
+}
+/*
+.rate_text {
+    width: 100%;
+    float: left;
+    text-align: center;
+    font-size: 18px;
+    color: #7c9689;
+    font-weight: bold;
+    padding-bottom: 0px;
+    margin-left:60px ;
+}*/
+.button-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .hover01 figure:hover .button-container {
+    opacity: 1;
+  }
+  
+  .read_bt_1 {
+    width: 150px;
+    margin: 5px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1c1c1c;
+    color: #ffffff;
+    text-align: center;
+  }
+  
+  .read_bt_1 a {
+    display: block;
+    width: 100%;
+    font-size: 10px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .read_bt_1 a:hover {
+    color: #1c1c1c;
+    background-color: #b1fa07;
+  }
+  
+
+/* Change the width of each column to 25% for a 4-column layout */
+.col-md-4 {
+    width: 25%;
+}
+
+/* Ensure that columns float left and have no margin or padding */
+.col-md-4 {
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+/* Adjust the hover effect to maintain image aspect ratio */
+.hover01 figure img {
+    width: 100%;
+    height: auto;
+}
+
