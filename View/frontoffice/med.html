@@ -149,7 +149,7 @@
                   </div>
                   <div class="row mt-4 tm-edit-product-row">
                       <div class="col-xl-7 col-lg-7 col-md-12">
-                          <form action="" class="tm-edit-product-form">
+                          <form action="" class="tm-edit-product-form" name="ff">
                                    <table>
                   
                                         <tr>
@@ -158,7 +158,7 @@
                                                        <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Nom</label><br>
                                              </td>
                                              <td>
-                                         <input value="nom" id="name" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                                         <input  id="nom" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                                           </div>
                                           <br>
                                              </td>
@@ -171,7 +171,7 @@
                                              </td>
                                              <td>
           
-                                                  <input value="prenom" id="name" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+                                                  <input  id="pre" name="pre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                                              </div>
                                              <br>
                                              </td>
@@ -196,10 +196,10 @@
                                    <tr>
                                         <td>
                                              <div class="input-group mb-3">
-                                                  <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Telephone</label><br>
+                                                  <label for="tel" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Telephone</label><br>
                                         </td>
                                         <td>
-                                    <input placeholder="telephone Date" value="+00 000000" id="expire_date" name="expire_date" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
+                                    <input placeholder="telephone "  id="tel" name="tel" type="tel" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
                                    data-large-mode="true">
                                      </div>
                                      <br>
@@ -213,7 +213,7 @@
                                         </td>
                                         <td>
 
-                                             <input placeholder="Stock" value="00000000" id="stock" name="stock" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
+                                             <input placeholder="cin"  id="cin" name="cin" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                                         </div>
                                         <br>
                                         </td>
@@ -224,12 +224,12 @@
                                    <tr>
                                         <td>
                                              <div class="input-group mb-3">
-                                                  <label for="stock" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Ancien mot de passe
+                                                  <label for="amdp" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Ancien mot de passe
                                                   </label>
                                         </td>
                                         <td>
 
-                                             <input placeholder="Stock" value="*********" id="stock" name="stock" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
+                                             <input placeholder="amdp"  id="amdp" name="amdp" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                                         </div>
                                         <br>
                                         </td>
@@ -242,7 +242,7 @@
                                         </td>
                                         <td>
 
-                                             <input placeholder="Stock" value="*********" id="stock" name="stock" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
+                                             <input placeholder="nouveau mot de passe"  id="nmdp" name="nmdp" type="password" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7">
                                         </div>
                                         <br>
                                         </td>
@@ -361,5 +361,7 @@
      <script src="../../asset/frontoffice/js/smoothscroll.js"></script>
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
+     <script src="../../asset/frontoffice/js/controle.js"></script>
+
 
 </html>

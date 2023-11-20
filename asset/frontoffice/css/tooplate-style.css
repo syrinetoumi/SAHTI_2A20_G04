@@ -1126,6 +1126,14 @@ input{
     font-weight: 600;
     height: 55px;
   }
+  button{
+    #appointment button#cf-submit {
+      background: #b1fa07;
+      color: #1c1c1c;
+      font-weight: 600;
+      height: 55px;
+    }
+  }
 
   #appointment button#cf-submit:hover {
     background: #393939;
@@ -1369,6 +1377,9 @@ input{
 
     .border-top {
       text-align: center;
+    }
+    .error {
+      color: red;
     }
 
     .copyright-text {

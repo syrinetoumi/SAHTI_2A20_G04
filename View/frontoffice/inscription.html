@@ -1,9 +1,12 @@
 
+
+
+
     <link rel="stylesheet" href="../../asset/frontoffice/css/form_style.css">
     <body>
         <div id="container">
            <header id="hea">Nouveau compte</header>
-           <form method="post" name="f" onsubmit="verifierChamps(event) ">
+           <form method="post" name="f" onsubmit="return verifierChamps(event)">
               <fieldset>
                  <br/>
                  <input type="text" name="username" id="nom" placeholder="Nom" >
@@ -14,14 +17,16 @@
                  <br/><br/>
                  <input type="tel" name="tel" id="tel" placeholder="Telephone"  >
                  <br/><br/>
+                 <input type="number" name="cin" id="cin" placeholder="Cin"  >
+                 <br/><br/>
                  <input type="password" name="password" id="password" placeholder="Mot de passe"  >
                  <br/><br/>
                  <input type="password" name="confirm-password" id="motdepasse" placeholder="confirmer mot de passe"  >
                  <br/> <br/> <br/>
-                 <input type="radio" name="x">Medecin
-                 <input type="radio" name="x">Patient<br>
-                 <input type="radio" name="x">Coach
-                 <input type="radio" name="x">Chauffeur<br><br>
+                 <input type="radio" name="x" value="medecin">Medecin
+                 <input type="radio" name="x" value="Patient">Patient<br>
+                 <input type="radio" name="x" value="Coach">Coach
+                 <input type="radio" name="x" value="Chauffeur">Chauffeur<br><br>
 
                  <label for="submit"></label>
                  <input type="submit" name="submit" id="submit" value="Enregistrer">
@@ -29,5 +34,5 @@
            </form>
         </div>
      </body>
-     <script src="../../asset/frontoffice/js/controle.js"></script>
+     <script src="../../asset/frontoffice/js/verification.js"></script>
 
