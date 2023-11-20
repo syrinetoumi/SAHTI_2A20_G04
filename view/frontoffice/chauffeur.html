@@ -28,19 +28,21 @@
               padding: 15px;
               font-size: 18px;
               border-radius: 8px;
-              background-color: #3498db;
-              color: #fff;
+              color: #b1fa07;
+              background-color: #252525;
               cursor: pointer;
               transition: background-color 0.3s ease-in-out;
           }
-
+          
           .ajout:hover {
-              background-color: #2980b9;
+               background-color: #252525;
           }
 
           #ajouter td[colspan="4"], #rend td[colspan="6"] {
               font-size: 24px;
           }
+
+         
      </style>
 
      <!-- MAIN CSS -->
@@ -198,6 +200,13 @@
        </table>
      </center>
    </section>
+   <section id="b-ajouter" class="container text-center">
+     <div class="row">
+         <div class="col-md-12">
+             <button type="button" class="ajout " id="misVehicule">Ajouter</button>
+         </div>
+     </div>
+ </section>
 <br><br><br><br><br>
 
 <section id="rend">
@@ -217,7 +226,7 @@
        <tr style="border-top: 2px solid black;">
          <td style="border-right: 2px solid black;">
            <b><div class="input-group mb-3">
-             <select id="category" ><div id="vide_category"></div>
+             <select id="category"><div id="vide_category"></div>
                <option value="Tunis">Tunis</option>
                <option value="Ariana">Ariana</option>
                <option value="Ben Arous">Ben Arous</option>
@@ -256,10 +265,10 @@
      </table>
    </section>
 <br><br>
-   <section id="b-ajouter" class="container text-center">
+<section id="b-ajouter-trajet" class="container text-center">
      <div class="row">
          <div class="col-md-12">
-             <button type="button" class="ajout" id="mis">Ajouter</button>
+             <button type="button" class="ajout" id="misTrajet">Ajouter</button>
          </div>
      </div>
  </section>
@@ -320,6 +329,8 @@
 <script src="../../asset/frontoffice/js/smoothscroll.js"></script>
 <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
 <script src="../../asset/frontoffice/js/custom.js"></script>
-<script src="../../asset/frontoffice/js/chauf.js"></script>
+<script src="../../asset/frontoffice/js/vehicule.js"></script>
+<script src="../../asset/frontoffice/js/trajet.js"></script>
+
 
 </html>

@@ -1,44 +1,12 @@
 <?php
+// Include the necessary files
+include '../Controller/trajetT.php';
 
-include '../Controller/vehiculeC.php';
-include '../model/vehicule.php';
-$error = "";
+// Create an instance of the controller
+$trajetC = new TrajetT();
 
-// create vehicule
-$vehicule = null;
-// create an instance of the controller
-$vehiculeC = new VehiculeC();
-
-if (
-    isset($_POST["marque"]) &&
-    isset($_POST["modele"]) &&
-    isset($_POST["annee"]) &&
-    isset($_POST["plnum"])
-) {
-    if (
-        !empty($_POST['marque']) &&
-        !empty($_POST["modele"]) &&
-        !empty($_POST["annee"]) &&
-        !empty($_POST["plnum"])
-    ) {
-        $vehicule = new Vehicule(
-            null,
-            $_POST['marque'],
-            $_POST['modele'],
-            $_POST['annee'],
-            $_POST['plnum']
-        );
-
-        $vehiculeC->updateVehicule($vehicule, $_POST['idVehicule']);
-
-        // Redirect to listVehicules.php after successful update
-        header('Location: listVehicules.php');
-        exit; // Ensure no further code is executed after the redirection
-    } else {
-        $error = "Missing information";
-    }
-}
-
+// Get the list of trajectories
+$tab = $trajetC->listTrajet();
 ?>
 
 <!DOCTYPE html>
@@ -48,15 +16,11 @@ if (
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ajouter un utilisateur</title>
+    <title>Liste des Trajets</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <!-- https://fonts.google.com/specimen/Open+Sans -->
     <link rel="stylesheet" href="../asset/backoffice/css/fontawesome.min.css">
-    <!-- https://fontawesome.com/ -->
     <link rel="stylesheet" href="../asset/backoffice/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
-    <!-- http://api.jqueryui.com/datepicker/ -->
     <link rel="stylesheet" href="../asset/backoffice/css/bootstrap.min.css">
-    <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="../asset/backoffice/css/tooplate.css">
 </head>
 
@@ -127,82 +91,74 @@ if (
                 </nav>
             </div>
         </div>
-    <!--button><a href="listvehicules.php">Back to list</a></button-->
-    <hr>
-
-    <div id="error">
-        <?php echo $error; ?>
-    </div>
-
-    <?php
-    if (isset($_POST['idVehicule'])) {
-        $vehicule = $vehiculeC->showVehicule($_POST['idVehicule']);
-    ?>
-<div class="row tm-mt-big">
+        <!-- row -->
+        <div class="row tm-mt-big">
 
 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
     <div class="bg-white tm-block">
-        <form action="uppdatevehicule.php" method="POST">
-            <table>
-                <tr>
-                    <td ><label style="color:white" for="idVehicule">Vehicule Id:</label></td>
-                    <td>
-                        <input type="text" id="idVehicule" name="idVehicule" value="<?php echo $_POST['idVehicule'] ?>" readonly />
-                        <span id="erreurIdVehicule" style="color: red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label style="color:white" for="marque">Marque :</label></td>
-                    <td>
-                        <input type="text" id="marque" name="marque" value="<?php echo $vehicule['marque'] ?>" />
-                        <span id="erreurMarque" style="color: red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label style="color:white" for="modele">Modèle :</label></td>
-                    <td>
-                        <input type="text" id="modele" name="modele" value="<?php echo $vehicule['modele'] ?>" />
-                        <span id="erreurModele" style="color: red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label style="color:white" for="annee">Année :</label></td>
-                    <td>
-                        <input type="text" id="annee" name="annee" value="<?php echo $vehicule['annee'] ?>" />
-                        <span id="erreurAnnee" style="color: red"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td><label style="color:white" for="plnum">Plaque matricule :</label></td>
-                    <td>
-                        <input type="text" id="plnum" name="plnum" value="<?php echo $vehicule['plnum'] ?>" />
-                        <span id="erreurPlanum" style="color: red"></span>
-                    </td>
-                </tr>
 
-                <td>
-                    <input type="submit" value="Save">
+        <center>
+            <h1 style="color:#b1fa07;">Liste des Trajets</h1>
+        </center>
+        <table width="80%" style="margin: 0 auto; border-collapse: collapse; border: 2px solid white; background-color: transparent;">
+            <tr>
+                <td class="styleTable" colspan="8" align="center" style="border-bottom: 2px solid white;">
+                    <b id="mod">Trajet</b>
                 </td>
-                <td>
-                    <input type="reset" value="Reset">
-                </td>
-            </table>
-            </div>
+            </tr>
+            <tr>
+                <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black;"><b>ID Trajet</b></td>
+                <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black; border-bottom: 2px solid black;"><b>État</b></td>
+                <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black;"><b>Année d'expérience</b></td>
+                <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black;"><b>Routes Préférées</b></td>
+                <td class="styleTable" align="center" width="100%" style="border-right: 2px solid black;width: 115.2px;"><b>Préférence Véhicule</b></td>
+                <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black;"><b>Compétences Spéciales</b></td>
+                <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black;"><b>Mise à jour</b></td>
+                <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black;"><b>Supprimer</b></td>
+            </tr>
+            <?php
+            foreach ($tab as $trajet) {
+            ?>
+                <tr style="border-top: 2px solid white;">
+                    <td class="styleTable" align="center" width="25%" style="border-right: 2px solid black;"><?= $trajet['trajet_id']; ?></td>
+                    <td class="styleTable" align="center" width="25%" style="border-right: 2px solid black;"><?= $trajet['etat']; ?></td>
+                    <td class="styleTable" align="center" width="25%" style="border-right: 2px solid black;"><?= $trajet['annee_exp']; ?></td>
+                    <td class="styleTable" align="center" width="25%" style="border-right: 2px solid black;"><?= $trajet['routes_pre']; ?></td>
+                    <td class="styleTable" align="center" width="25%" style="border-right: 2px solid black;"><?= $trajet['pref_veh']; ?></td>
+                    <td class="styleTable" align="center" width="25%" style="border-right: 2px solid black;"><?= $trajet['comp_spe']; ?></td>
+                    <td class="styleTable" align="center" width="25%" style="border-right: 2px solid black;">
+                        <form method="POST" action="updatetrajet.php">
+                            <button style="width: 115.2px;color:green" class="up1" id="up1" type="submit" name="update" value="Update">
+                                <input type="hidden" value="<?= $trajet['trajet_id']; ?>" name="idTrajet">
+                                Mise à jour
+                            </button>
+                        </form>
+                    </td>
+                    <td class="styleTable" align="center" width="20%" style="border-right: 2px solid black;">
+                        <form method="POST" action="deletetrajet.php">
+                            <button style="color:red;" type="submit" name="delete" value="<?= $trajet['trajet_id']; ?>">
+                                Supprimer
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </table>
+    </div>
 </div>
 </div>
-        </form>
-    <?php
-    }
-    ?>
+
 <!-- FOOTER -->
 <footer class="row tm-mt-big">
-            <div class="col-12 font-weight-light">
-                <p class="d-inline-block tm-bg-black text-white py-2 px-4">
-                    Copyright &copy; 2023/2024 Esprit école sup privée
-                </p>
-            </div>
-        </footer>
-    </div>
+<div class="col-12 font-weight-light">
+    <p class="d-inline-block tm-bg-black text-white py-2 px-4">
+        Copyright &copy; 2023/2024 Esprit école sup privée
+    </p>
+</div>
+</footer>
+</div>
 
     <script src="../asset/backoffice/js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
@@ -216,5 +172,6 @@ if (
         });
     </script>
 </body>
+
 
 </html>

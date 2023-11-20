@@ -41,7 +41,7 @@ body {
 }
 
 body {
-  background-image: url("C:\Users\1cyri\OneDrive\Bureau\BACKOFF\img\dash-bg-01.jpg");
+  background-image: url("../img/dash-bg-01.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,11 +51,11 @@ body {
 }
 
 .bg02 {
-	background-image: url("C:\Users\1cyri\OneDrive\Bureau\projet\BACKOFF\img\dash-bg-01.jpg");
+	background-image: url("../img/dash-bg-01.jpg");
 }
 
 .bg03 {
-	background-image: url("C:\Users\1cyri\OneDrive\Bureau\BACKOFF\img\dash-bg-03.jpg");
+	background-image: url("../img/dash-bg-03.jpg");
 }
 
 a {
@@ -561,6 +561,11 @@ footer {
   .tm-site-icon {
     font-size: 2em;
   }
+  
+}
+.styleTable{
+  color:white;
+  border-color: white !important;
 }
 
 @media (max-width: 480px) {

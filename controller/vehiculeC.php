@@ -33,24 +33,32 @@ class VehiculeC
     }
 }
 
-    function ajouter($vehicule)
+function ajouter($vehicule)
 {
-    $sql = "INSERT INTO vehicule  
-    VALUES (:id, :marque, :modele, :annee, :plnum)";
+    $sql = "INSERT INTO vehicule(marque, modele, annee, plnum)  
+            VALUES (:marque, :modele, :annee, :plnum)";
     $db = config::getConnexion();
     try {
         $query = $db->prepare($sql);
         $query->execute([
-            'id' => $vehicule->getvehicule_id(),
             'marque' => $vehicule->getmarque(),
             'modele' => $vehicule->getmodele(),
             'annee' => $vehicule->getannee(),
             'plnum' => $vehicule->getplanum(),
         ]);
+
+        // Output success message if needed
+        echo "Record inserted successfully <br>";
+
+        // Redirect to listvehicule.php after successful insertion
+        header('Location: listvehicule.php');
+        exit; // Ensure no further code is executed after the redirection
     } catch (Exception $e) {
         echo 'Error: ' . $e->getMessage();
     }
 }
+
+
 
 
     function showVehicule($id)

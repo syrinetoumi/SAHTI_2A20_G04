@@ -126,6 +126,14 @@ label {
   color: #b1fa07;
   background-color: #252525;
 }
+.misVehicule{
+  color: #b1fa07;
+  background-color: #252525;
+}
+.misTrajet{
+  color: #b1fa07;
+  background-color: #252525;
+}
 .btn-small {
   padding: 10px 24px;
 }
@@ -221,7 +229,7 @@ height: 24px;}
 .tm-table-actions-col-right {
   text-align: right;
 }
-option , #category{
+option , #etat{
   color: #b1fa07;
   background-color: #252525;
 }
