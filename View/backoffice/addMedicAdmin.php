@@ -1,5 +1,5 @@
 <?php
-include '../../controller/MedicC.php';
+include '../../Controller/MedicC.php';
 include '../../model/Medic.php';
 
 $error = "";
@@ -199,5 +199,5 @@ if (
         });
     </script>
 </body>
-
+<script src="../../asset/frontoffice/js/medicament.js"></script>
 </html>

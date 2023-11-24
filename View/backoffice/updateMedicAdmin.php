@@ -1,6 +1,6 @@
 <?php
 
-include '../../controller/MedicC.php';
+include '../../Controller/MedicC.php';
 include '../../model/Medic.php';
 
 $error = "";
@@ -215,6 +215,7 @@ if (isset($_POST["medicament"]) && isset($_POST["photo"]) && isset($_POST["lien"
             $('#expire_date').datepicker();
         });
     </script>
+     <script src="../../asset/frontoffice/js/medicament.js"></script>
 </body>
 
 </html>

@@ -63,7 +63,7 @@ $tab = $c->listOrdo();
               <div class="collapse navbar-collapse">
                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
-                        <li class="appointment-btn"><a href="indexmedecin.html">Acceuil</a></li>
+                        <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
 
                    </ul>
               </div>

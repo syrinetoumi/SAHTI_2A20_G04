@@ -38,15 +38,9 @@ if (isset($_GET['search'])) {
 
      
      <link rel="stylesheet" href="../../asset/frontoffice/css/rania.css"> 
-     <link rel="stylesheet" href="../../asset/frontoffice/css/shop.css"> 
+     <link rel="stylesheet" href="../../asset/frontoffice/css/tablemed.css"> 
 
-     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="../../asset/frontoffice/css/search.css"> 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
      
           
 
@@ -82,65 +76,75 @@ if (isset($_GET['search'])) {
                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
+
                    </ul>
               </div>
-
 
          </div>
     </section>
 
-<br><br><br>
 
+    
 
+<!-- Search Form -->
 <section>
-     <div class="wrapper">
-                         <div class="SEARCHcontainer">
-                              <form role="search" method="get" action="listMedic.php" class="search-form form">
-                              <label>
-                                   <span class="screen-reader-text">Search for...</span>
-                                   <input type="search" class="search-field" placeholder="Trouver des médicaments..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>" name="search" title="" />
-                              </label>
-                              <input type="submit" class="search-submit button" value="&#xf002" />
-                         </form>
-                         </div>
-                         </div></section>
-
-
-
-<br><br><br><br>
-<section class="meds">
-    <div class="responsive-container">
-        <div class="grid">
-            <?php foreach ($tab as $medic) { ?>
-                <div class="grid-column">
-                    <div class="product">
-                        <div class="product-image">
-                            <img src="../../asset/frontoffice/images/<?php echo $medic['photo']; ?>" class="imgmed" width="300px" height="250px">
-                        </div>
-                        <div class="product-content">
-                            <div class="product-info">
-                              <p class="product-title"><?= $medic['medicament']; ?></p>
-					     <button class="bouton2" onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button>
-                            </div>
-                        </div>
-                    </div>
+        <form method="GET" action="listMedic.php">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search for medicines" name="search" value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </div>
-            <?php } ?>
-        </div>
-    </div>
-	<br><br><br><br><br>
-<button type="button" class="bouton" >Voir plus</button>
-               <br><br><br><br><br>
-               
+            </div>
+        </form>
 </section>
 
 
 
 
+   
+   <section class="ordonnance" >
+          <center><div>
+                 <h4 >Quelques médicaments</h4>
+                 <p >Ajouter, Modifier et Supprimer !</p>
+               </div></center>
+               <br><br><br><br><br>
+        <form id="form">
+        <center><table class="dataTable" id="medicationTable">
+            <thead>
+                <tr class="col1">
+                    <th>Id</th>
+                    <th>Medicament</th>
+                    <th>Photo</th>
+                    <th>Lien</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <?php
+          foreach ($tab as $medic) {
+          ?>
 
-   
-   
-<br><br><br><br>
+          <tr>
+                    <td><?= $medic['idmed']; ?></td>
+                    <td><?= $medic['medicament']; ?></td>
+                    
+                    <td>
+                    <img src="../../asset/frontoffice/images/<?php echo $medic['photo']; ?>" class="imgmed">
+                    </td>
+          <td>
+          <button class="bouton2" onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button>
+          </td>
+                    
+                         </tr>
+          <?php
+          }
+          ?>
+                    </tbody>
+               </table></center>
+               <button type="button" class="bouton" onclick="location.href='addMedic.php';">Ajouter un médicament</button>
+               <br><br><br><br><br>
+               
+         </form>
+    </section>
 
     
      

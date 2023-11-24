@@ -21,12 +21,12 @@ function ValiderMedicament() {
     }
 
 
-
+/*
     function Validerlien(lien) {
-        var pattern =   /^(https?:\/\/)?(www\.)?[a-zA-Z0-9]+\.[a-zA-Z]{2,}(\/\S*)?$/;
+        var pattern =   /^[a-zA-Z0-9]+$/;
         return lien.length > 2 && pattern.test(lien);
     }
-
+*/
 
   // PARTIE 2
   document.getElementById("form").addEventListener("submit", function (e) {

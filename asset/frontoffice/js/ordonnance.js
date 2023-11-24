@@ -52,9 +52,9 @@ document.getElementById("form").addEventListener("submit", function (e) {
     e.preventDefault();
     ValiderOrdonnance();
 });
-*/
 
-  function ValiderOrdonnance() {
+*/
+    function ValiderOrdonnance() {
     var nommed = document.getElementById("nommed").value;
     var dosage = document.getElementById("dosage").value;
     var duree = document.getElementById("duree").value;
