@@ -41,7 +41,7 @@ body {
 }
 
 body {
-  background-image: url("C:\Users\1cyri\OneDrive\Bureau\BACKOFF\img\dash-bg-01.jpg");
+  background-image: url(../../backoffice/img/dash-bg-01.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -51,11 +51,11 @@ body {
 }
 
 .bg02 {
-	background-image: url("C:\Users\1cyri\OneDrive\Bureau\projet\BACKOFF\img\dash-bg-01.jpg");
+	background-image: url(../../backoffice/img/dash-bg-02.jpg);
 }
 
 .bg03 {
-	background-image: url("C:\Users\1cyri\OneDrive\Bureau\BACKOFF\img\dash-bg-03.jpg");
+	background-image: url(../../backoffice/img/dash-bg-03.jpg);
 }
 
 a {
@@ -109,7 +109,7 @@ a:focus {
 }
 
 .tm-block {
-  padding: 50px 50px;
+  padding: 50px 45px;
 }
 
 .tm-block-title {
@@ -178,7 +178,7 @@ color: #b1fa07;
 
 .tm-link-black:hover,
 .tm-link-black:focus {
-  color: #0266c4;
+  color:#075cfa
 }
 
 ol {
@@ -189,10 +189,6 @@ ol {
   counter-reset: myOrderedListItemsCounter;
   padding-left: 0;
 }
-.tt{
-  width: 200px;
-  height: 100px;
-}
 
 .tm-list-group > li {
   list-style-type: none;
@@ -200,6 +196,7 @@ ol {
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 8px;
+  color:white;
 }
 
 .tm-list-group-pad-big > li {
@@ -207,11 +204,12 @@ ol {
 }
 
 .tm-list-group > li:hover {
-  color: #0266c4;
+  color:#b1fa07;
 }
 
 .tm-list-group-alternate-color > li:nth-child(odd) {
-  background-color: #e6e6e6;
+  background-color:#1c1c1c;
+  color: #b1fa07;
 }
 
 .tm-list-group > li:before {
@@ -238,13 +236,10 @@ ol {
 label {
   margin-bottom: 18px;
 }
-#lab{
-  color:whitesmoke;
-}
 
 .btn {
   border-radius: 0;
-  padding: 13px 3px;
+  padding: 13px 28px;
   transition: all 0.2s ease;
   max-width: 100%;
 }
@@ -497,7 +492,7 @@ footer {
     height: auto;
   }
   .tm-block {
-    padding: 3px;
+    padding: 30px;
   }
 
   .tm-table-actions-row {

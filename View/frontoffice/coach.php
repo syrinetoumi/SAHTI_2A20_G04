@@ -59,7 +59,7 @@
                          <li><a href="#profupdate" class="smoothScroll">Modier mon profil</a></li>
 
                         <!-- <li class="appointment-btn"><a href="C:\Users\1cyri\OneDrive\Bureau\projet\View\upmed.html">Modifier mon profil  </a></li>-->
-                         <li class="appointment-btn"><a href="../../asset/frontoffice/view/inscription.html">se deconnecter</a></li>
+                         <li class="appointment-btn"><a href="../../asset/frontoffice/view/deconnecter.php">se deconnecter</a></li>
 
                     </ul>
                </div>
@@ -80,7 +80,7 @@
                <td align="center" width="15%"><b>Email</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                <td align="center" width="15%"><b>Telephone</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                <td align="center" width="15%"><b>Cin</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Specialite</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+               <td align="center" width="15%"><b>Zone</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                <td align="center" width="15%"><b>Mot de passe</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
           </tr>
           <tr>
@@ -105,14 +105,14 @@
           <table width="90%" height="182">
                <tr>
                     <td colspan="7" align="center">
-                    <p align="center"><b>Mes rendez-vous </b></td>
+                    <p align="center"><b>Mon plant </b></td>
                </tr>
                <tr>
                     <td align="center" width="15%"><b>Nom_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                     <td align="center" width="15%"><b>Prenom_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                     <td align="center" width="15%"><b>Telephone_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Maladie</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Ordonnance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                    <td align="center" width="15%"><b>point de depart</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>point d'arriver</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
 
                </tr>
                <tr>
@@ -179,16 +179,14 @@
                                    <tr>
                                         <td>
                                              <div class="input-group mb-3">
-                                                  <label for="specialite" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Specialite</label>
+                                                  <label for="specialite" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">zone </label>
                                                   <br>
                                         </td>
                                         <td>
                                    <select  id="category">
-                                             <option value="1">chirurgie</option>
-                                             <option value="2">dentiste  </option>
-                                             <option value="3">neurologue</option>
-                                             <option value="4">generaliste   </option>
-                                             <option value="5">psychiatre  </option>
+                                             <option value="1">banlieu sud </option>
+                                             <option value="2">banlieu nord  </option>
+                                             <option value="3">centre ville </option>
                                              </select>
                                         </div>
                                         <br></td>

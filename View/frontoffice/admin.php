@@ -54,8 +54,8 @@
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                          <li><a href="index.html">Accueil</a></li>
-                         <li><a href="#rend" class="smoothScroll">Mes rendez-vous</a></li>
-                         <li><a href="#cordonnee" class="smoothScroll">Mes cordonnée</a></li>
+                         <li><a href="#rend" class="smoothScroll">Liste des medecins</a></li>
+                         <li><a href="#cordonnee" class="smoothScroll">Liste d'utilisateurs</a></li>
                          <li><a href="#profupdate" class="smoothScroll">Modier mon profil</a></li>
 
                         <!-- <li class="appointment-btn"><a href="C:\Users\1cyri\OneDrive\Bureau\projet\View\upmed.html">Modifier mon profil  </a></li>-->
@@ -80,11 +80,9 @@
                <td align="center" width="15%"><b>Email</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                <td align="center" width="15%"><b>Telephone</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                <td align="center" width="15%"><b>Cin</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Specialite</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
                <td align="center" width="15%"><b>Mot de passe</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
           </tr>
           <tr>
-               <td width="15%">&nbsp;</td>
                <td width="15%">&nbsp;</td>
                <td width="15%">&nbsp;</td>
                <td width="15%">&nbsp;</td>
@@ -105,18 +103,16 @@
           <table width="90%" height="182">
                <tr>
                     <td colspan="7" align="center">
-                    <p align="center"><b>Mes rendez-vous </b></td>
+                    <p align="center"><b>Liste des medecins </b></td>
                </tr>
                <tr>
-                    <td align="center" width="15%"><b>Nom_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Prenom_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Telephone_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Maladie</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Ordonnance</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                    <td align="center" width="15%"><b>Nom_med</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Prenom_med</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Telephone_med</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Specialite</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
 
                </tr>
                <tr>
-                    <td width="15%">&nbsp;</td>
                     <td width="15%">&nbsp;</td>
                     <td width="15%">&nbsp;</td>
                     <td width="15%">&nbsp;</td>
@@ -129,12 +125,91 @@
 
     <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
     <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+  
+    <section id="rend">
+     <center>
+          <table width="90%" height="182">
+               <tr>
+                    <td colspan="7" align="center">
+                    <p align="center"><b>Liste des patients </b></td>
+               </tr>
+               <tr>
+                    <td align="center" width="15%"><b>Nom_patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Prenom_patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Telephone_patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Maladie</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
 
+               </tr>
+               <tr>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+               </tr>
+          </table></center>
+    </section>
 
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <section id="rend">
+     <center>
+          <table width="90%" height="182">
+               <tr>
+                    <td colspan="7" align="center">
+                    <p align="center"><b>Liste des coach </b></td>
+               </tr>
+               <tr>
+                    <td align="center" width="15%"><b>Nom_coach</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Prenom_coach</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Telephone_coach</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Type de sport</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+
+               </tr>
+               <tr>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+               </tr>
+          </table></center>
+    </section>
+
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <section id="rend">
+     <center>
+          <table width="90%" height="182">
+               <tr>
+                    <td colspan="7" align="center">
+                    <p align="center"><b>Liste des chauffeur </b></td>
+               </tr>
+               <tr>
+                    <td align="center" width="15%"><b>Nom_chauffeur</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Prenom_chauffeur</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Telephone_chauffeur</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+                    <td align="center" width="15%"><b>Zone de travaille</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
+
+               </tr>
+               <tr>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+                    <td width="15%">&nbsp;</td>
+               </tr>
+          </table></center>
+    </section>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
 
 <section id="profupdate">
 
@@ -176,23 +251,6 @@
                                              <br>
                                              </td>
                                         </tr>
-                                   <tr>
-                                        <td>
-                                             <div class="input-group mb-3">
-                                                  <label for="specialite" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Specialite</label>
-                                                  <br>
-                                        </td>
-                                        <td>
-                                   <select  id="category">
-                                             <option value="1">chirurgie</option>
-                                             <option value="2">dentiste  </option>
-                                             <option value="3">neurologue</option>
-                                             <option value="4">generaliste   </option>
-                                             <option value="5">psychiatre  </option>
-                                             </select>
-                                        </div>
-                                        <br></td>
-                                   </tr>
                                    <tr>
                                         <td>
                                              <div class="input-group mb-3">

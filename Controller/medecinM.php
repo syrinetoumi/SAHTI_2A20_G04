@@ -1,7 +1,7 @@
 <?php
 
 
-require '../config.php';
+require 'C:\xampp\htdocs\projetweb\config.php';
 
 
 class medecinM
