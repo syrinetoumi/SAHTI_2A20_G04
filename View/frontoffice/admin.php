@@ -413,6 +413,8 @@
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
      <script src="../../asset/frontoffice/js/controle.js"></script>
+     <script src="../../asset/frontoffice/js/valider.js"></script>
+
 
 
 </html>

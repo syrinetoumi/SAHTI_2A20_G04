@@ -1,12 +1,13 @@
 <?php
 session_start();
 require_once '../../Controller/userC.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $role = $_POST["role_u"];
     $email = $_POST["email_u"];
     $motdepasse = $_POST["mdp_u"];
     
-    $userC = new UserC();
+    $userC = new userC(); // Correction du nom de classe ici
     $user = $userC->showUserByEmail($email);
 
     if ($user) {
@@ -46,7 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -61,11 +61,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <fieldset>
                 <br/>
 
-                <input type="email" name="email" id="email" placeholder="E-mail" required>
+                <input type="email" name="email_u" id="email_u" placeholder="email_u" required>
                 <br/><br/><br><br>
 
-                <input type="password" name="password" id="password" placeholder="Mot de passe" required>
+                <input type="password" name="mdp_u" id="mdp_u" placeholder="mdp_u" required>
                 <br/><br/><br>
+
+                <!-- Ajout du champ "role_u" -->
+                <label for="role_u">Rôle :</label>
+                <select name="role_u" id="role_u" required>
+                    <option value="admin">Admin</option>
+                    <option value="medecin">Médecin</option>
+                    <option value="chauffeur">Chauffeur</option>
+                    <option value="coach">Coach</option>
+                </select>
+
+                <br/><br/>
 
                 <input type="submit" name="submit" id="submit" value="Se connecter">
             </fieldset>

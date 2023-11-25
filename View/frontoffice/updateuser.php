@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Nom: " . $_POST['nom_u'] . "<br>";
             echo "Prenom: " . $_POST['prenom_u'] . "<br>";
             echo "CIN: " . $_POST['cin_u'] . "<br>";
-            echo "EMAIL: " . $_POST['e_mail_u'] . "<br>"; 
+            echo "EMAIL: " . $_POST['email_u'] . "<br>"; 
             echo "TEL: " . $_POST['tel_u'] . "<br>";
             echo "ROLE: " . $_POST['role_u'] . "<br>";
             echo "MOT DE PASSE: " . $_POST['mdp_u'] . "<br>";
@@ -86,14 +86,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 
     <?php
-    if (isset($_POST['id_med'])) {
-        $user = $userC->showuser($_POST['id_u']);
-    ?>
+    if (isset($_POST['id_u'])) {
+        $user = $userC->showUserByEmail($_POST['email_u']);
+        ?>
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <table>
                 <tr>
-                    <td><label for="id_med">Id_U :</label></td>
+                    <td><label for="id_u">Id_U :</label></td>
                     <td>
                     <input type="text" id="id_u" name="id_u" value="<?php echo $_POST['id_u'] ?>" readonly />
                         <span id="erreurid" style="color: red"></span>
@@ -103,7 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <td><label for="nom_u">Nom :</label></td>
                     <td>
                         <input type="text" id="nom_u" name="nom_u" value="<?php echo $user['nom_u'] ?>" />
-                        <span id="erreurNom_med" style="color: red"></span>
+                        <span id="erreurNom_u" style="color: red"></span>
                     </td>
                 </tr>
                 <tr>
@@ -121,21 +121,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="tel_med">Téléphone :</label></td>
+                    <td><label for="tel_u">Téléphone :</label></td>
                     <td>
                         <input type="text" id="tel_u" name="tel_u" value="<?php echo $user['tel_u'] ?>" />
                         <span id="erreurTel" style="color: red"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="e_mail_u">Email :</label></td>
+                    <td><label for="email_u">Email :</label></td>
                     <td>
-                        <input type="email" id="e_mail_u" name="e_mail_u" value="<?php echo $user['e_mail_u'] ?>" />
+                        <input type="email" id="email_u" name="email_u" value="<?php echo $user['email_u'] ?>" />
                         <span id="erreurEmail" style="color: red"></span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="specialite_u">Role :</label></td>
+                    <td><label for="role_u">Role :</label></td>
                     <td>
                         <input type="text" id="role_u" name="role_u" value="<?php echo $user['role_u'] ?>" />
                         <span id="erreurspe" style="color: red"></span>

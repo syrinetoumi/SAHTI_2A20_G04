@@ -1,3 +1,68 @@
+<?php
+include '../../Controller/userC.php';
+include '../../model/user.php';
+
+$error = "";
+
+// create user
+$user = null;
+// create an instance of the controller
+$userC = new userC();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (
+        isset($_POST["nom_u"]) &&
+        isset($_POST["prenom_u"]) &&
+        isset($_POST["cin_u"]) &&
+        isset($_POST["tel_u"]) &&
+        isset($_POST["email_u"]) && // Update to match the input name in the form
+        isset($_POST["role_u"]) &&
+        isset($_POST["mdp_u"])
+    ) {
+        if (
+            !empty($_POST['nom_u']) &&
+            !empty($_POST["prenom_u"]) &&
+            !empty($_POST["cin_u"]) &&
+            !empty($_POST["tel_u"]) &&
+            !empty($_POST["email_u"]) && // Update to match the input name in the form
+            !empty($_POST["role_u"]) &&
+            !empty($_POST["mdp_u"])
+        ) {
+            // Update the following line to use the correct properties of the user object
+            $user = new user(
+                null,
+                $_POST['nom_u'],
+                $_POST['prenom_u'],
+                $_POST['cin_u'],
+                $_POST['tel_u'],
+                $_POST['email_u'], // Update to match the input name in the form
+                $_POST['role_u'],
+                $_POST['mdp_u']
+            );
+
+            $userC->updateuser($user, $_POST['id_u']);
+
+            // Add these lines for debugging
+            echo "Update request processed.<br>";
+            echo "ID: " . $_POST['id_u'] . "<br>";
+            echo "Nom: " . $_POST['nom_u'] . "<br>";
+            echo "Prenom: " . $_POST['prenom_u'] . "<br>";
+            echo "CIN: " . $_POST['cin_u'] . "<br>";
+            echo "EMAIL: " . $_POST['email_u'] . "<br>"; 
+            echo "TEL: " . $_POST['tel_u'] . "<br>";
+            echo "ROLE: " . $_POST['role_u'] . "<br>";
+            echo "MOT DE PASSE: " . $_POST['mdp_u'] . "<br>";
+
+            // ...
+
+            header('Location: listuser.php');
+            exit;
+        } else {
+            $error = "Missing information";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +123,6 @@
                          <li><a href="#cordonnee" class="smoothScroll">Mes cordonnée</a></li>
                          <li><a href="#profupdate" class="smoothScroll">Modier mon profil</a></li>
 
-                        <!-- <li class="appointment-btn"><a href="C:\Users\1cyri\OneDrive\Bureau\projet\View\upmed.html">Modifier mon profil  </a></li>-->
                          <li class="appointment-btn"><a href="../../asset/frontoffice/view/deconnecter.php">se deconnecter</a></li>
 
                     </ul>
@@ -179,14 +243,14 @@
                                    <tr>
                                         <td>
                                              <div class="input-group mb-3">
-                                                  <label for="specialite" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">zone </label>
+                                                  <label for="specialite" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">type de sport  </label>
                                                   <br>
                                         </td>
                                         <td>
                                    <select  id="category">
-                                             <option value="1">banlieu sud </option>
-                                             <option value="2">banlieu nord  </option>
-                                             <option value="3">centre ville </option>
+                                             <option value="1">kick boxing  </option>
+                                             <option value="2">cardio  </option>
+                                             <option value="3">athlétisme  </option>
                                              </select>
                                         </div>
                                         <br></td>
@@ -353,6 +417,8 @@
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
      <script src="../../asset/frontoffice/js/controle.js"></script>
+     <script src="../../asset/frontoffice/js/valider.js"></script>
+
 
 
 </html>

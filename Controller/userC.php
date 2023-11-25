@@ -1,10 +1,10 @@
 <?php
-
 require 'C:\xampp\htdocs\projetweb\config.php';
+require_once '../../model/user.php';
+
 
 class userC
 {
-
     public function listuser()
     {
         $sql = "SELECT * FROM user";
@@ -17,7 +17,7 @@ class userC
         }
     }
 
-    function deleteuser($id)
+    public function deleteuser($id)
     {
         $sql = "DELETE FROM user WHERE id_u = :id";
         $db = config::getConnexion();
@@ -31,10 +31,10 @@ class userC
         }
     }
 
-    function adduser($user)
+    public function adduser($user)
     {
         $sql = "INSERT INTO user  
-        VALUES (:id, :nom_u,:prenom_u,:tel_u, :cin_u,:email_u,:role_u,:mdp_u)";
+                VALUES (:id, :nom_u, :prenom_u, :tel_u, :cin_u, :email_u, :mdp_u, :role_u)";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -45,30 +45,45 @@ class userC
                 'tel_u' => $user->gettel_u(),
                 'cin_u' => $user->getcin_u(),
                 'email_u' => $user->getemail_u(),
+                'mdp_u' => $user->getmdp_u(),
                 'role_u' => $user->getrole_u(),
-                'mdp_u' => $user->getmdp_u()
             ]);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
 
-    function showuser($id)
+    function showUserByEmail($email)
     {
-        $sql = "SELECT * FROM user WHERE id_u = :id";
+        $sql = "SELECT * FROM user WHERE email_u = :email";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
-            $query->bindParam(':id', $id);
+            $query->bindParam(':email', $email);
             $query->execute();
-            $user = $query->fetch();
-            return $user;
+            $userData = $query->fetch();
+
+            if ($userData) {
+                $user = new user();
+                $user->setid_u($userData['id_u']);
+                $user->setnom_u($userData['nom_u']);
+                $user->setprenom_u($userData['prenom_u']);
+                $user->setcin_u($userData['cin_u']);
+                $user->settel_u($userData['tel_u']);
+                $user->setemail_u($userData['email_u']);
+                $user->setmdp_u($userData['mdp_u']);
+                $user->setrole_u($userData['role_u']);
+
+                return $user;
+            } else {
+                return null;
+            }
         } catch (Exception $e) {
             die('Error: ' . $e->getMessage());
         }
     }
 
-    function updateuser($user, $id)
+    public function updateuser($user, $id)
     {
         try {
             $db = config::getConnexion();
@@ -92,7 +107,7 @@ class userC
                 'cin_u' => $user->getcin_u(),
                 'email_u' => $user->getemail_u(),
                 'role_u' => $user->getrole_u(),
-                'mdp_u' => $user->getmdp_u()
+                'mdp_u' => $user->getmdp_u(),
             ]);
 
             echo $query->rowCount() . " records UPDATED successfully <br>";
