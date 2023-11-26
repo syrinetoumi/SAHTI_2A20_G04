@@ -1,7 +1,7 @@
 <?php
 
-include '../Controller/vehiculeC.php';
-include '../model/vehicule.php';
+include '../../Controller/vehiculeC.php';
+include '../../model/vehicule.php';
 $error = "";
 
 // create vehicule
@@ -51,13 +51,13 @@ if (
     <title>ajouter un utilisateur</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
-    <link rel="stylesheet" href="../asset/backoffice/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../../asset/backoffice/css/fontawesome.min.css">
     <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="../asset/backoffice/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../asset/backoffice/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
     <!-- http://api.jqueryui.com/datepicker/ -->
-    <link rel="stylesheet" href="../asset/backoffice/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../asset/backoffice/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="../asset/backoffice/css/tooplate.css">
+    <link rel="stylesheet" href="../../asset/backoffice/css/tooplate.css">
 </head>
 
 <body class="bg02">
@@ -67,7 +67,7 @@ if (
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
                     <a class="navbar-brand" href="./backoffice/accueilback.html">
                         <div class="logo">
-                            <img src="../asset/backoffice/img/logo.png" class="imglogo" alt="">
+                            <img src="../../asset/backoffice/img/logo.png" class="imglogo" alt="">
                        </div>
                     </a>
                     <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -111,8 +111,15 @@ if (
                                     <a class="dropdown-item" href="#">Customize</a>
                                 </div>
                             </li>
-                            <li class="nav-item active">
-                                <a class="nav-link" href="listvehicule.php">Chauffeur</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    chauffeur
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="listvehicule.php">listvehicule</a>
+                                    <a class="dropdown-item" href="listtrajettotalle.php">listtrajet</a>
+                                </div>
                             </li>
                         </ul>
                         <ul class="navbar-nav">
@@ -181,7 +188,7 @@ if (
                 </tr>
 
                 <td>
-                    <input type="submit" value="Save">
+                    <input type="submit" value="Save" id="updateVehicule">
                 </td>
                 <td>
                     <input type="reset" value="Reset">
@@ -204,17 +211,18 @@ if (
         </footer>
     </div>
 
-    <script src="../asset/backoffice/js/jquery-3.3.1.min.js"></script>
+    <script src="../../asset/backoffice/js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
-    <script src="../asset/backoffice/jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <script src="../../asset/backoffice/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <!-- https://jqueryui.com/download/ -->
-    <script src="../asset/backoffice/js/bootstrap.min.js"></script>
+    <script src="../../asset/backoffice/js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
     <script>
         $(function () {
             $('#expire_date').datepicker();
         });
     </script>
+    <script src="../../asset/frontoffice/js/updatevehicule.js"></script>
 </body>
 
 </html>

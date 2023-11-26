@@ -1,6 +1,6 @@
 <?php
-include '../Controller/vehiculeC.php';
-include '../model/vehicule.php';
+include '../../Controller/vehiculeC.php';
+include '../../model/vehicule.php';
 
 $error = "";
 
@@ -56,11 +56,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitVehicule"])) {
      <meta name="keywords" content="">
      <meta name="author" content="Tooplate">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <link rel="stylesheet" href="../asset/frontoffice/css/bootstrap.min.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/css/font-awesome.min.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/animate.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/owl.carousel.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/animate.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/owl.carousel.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/owl.theme.default.min.css">
      <style>
           select {
               width: 180%;
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitVehicule"])) {
      </style>
 
      <!-- MAIN CSS -->
-     <link rel="stylesheet" href="../asset/frontoffice/css/tooplate-style.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/tooplate-style.css">
 
 </head>
 <body  id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitVehicule"])) {
                          <span class="icon icon-bar"></span>
                     </button>
                     <div class="logo">
-                         <img src="../asset/frontoffice/img/logo.png" class="imglogo" alt="">
+                         <img src="../../asset/frontoffice/img/logo.png" class="imglogo" alt="">
                     </div>
                </div>
                <!-- MENU LINKS -->
@@ -230,14 +230,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitVehicule"])) {
 </footer>
 
 <!-- SCRIPTS -->
-<script src="../asset/frontoffice/js/jquery.js"></script>
-<script src="../asset/controllerjs/bootstrap.min.js"></script>
-<script src="../asset/frontoffice/js/jquery.sticky.js"></script>
-<script src="../asset/frontoffice/js/jquery.stellar.min.js"></script>
-<script src="../asset/frontoffice/js/jquery.sticky.js"></script>
-<script src="../asset/frontoffice/js/smoothscroll.js"></script>
-<script src="../asset/frontoffice/js/owl.carousel.min.js"></script>
-<script src="../asset/frontoffice/js/custom.js"></script>
-<script src="../asset/frontoffice/js/vehicule.js"></script>
+<script src="../../asset/frontoffice/js/jquery.js"></script>
+<script src="../../asset/controllerjs/bootstrap.min.js"></script>
+<script src="../../asset/frontoffice/js/jquery.sticky.js"></script>
+<script src="../../asset/frontoffice/js/jquery.stellar.min.js"></script>
+<script src="../../asset/frontoffice/js/jquery.sticky.js"></script>
+<script src="../../asset/frontoffice/js/smoothscroll.js"></script>
+<script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
+<script src="../../asset/frontoffice/js/custom.js"></script>
+<script src="../../asset/frontoffice/js/vehicule.js"></script>
 
 </html>

@@ -305,7 +305,7 @@ footer {
   @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600');
 
   body {
-    background: #ffffff;
+    background-color: var(--white-color);
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden;
   }
@@ -1390,6 +1390,13 @@ input{
       font-size: 11px;
       letter-spacing: 1px;
     }
+    
+    
+    .styleTable{
+      color:white;
+      border-color: white !important;
+    }
+    
 
   }
 

@@ -1,28 +1,39 @@
+
+
 <?php
-include '../Controller/trajetT.php';
-include '../model/trajet.php';
+include '../../Controller/trajetT.php';
+include '../../model/trajet.php';
 
 $error = "";
 
 // Create trajectory instance
 $trajet = null;
-
+$v = $_POST['idVehicule'];
+echo($v);
+// if (isset($_POST['idVehicule'])) {
+//      echo('hello');
+//      $id = $_POST['idVehicule'];
+//      echo($id);
+//  }
 // Create an instance of the controller
 $trajetT = new TrajetT();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
 
     if (
+
         
         isset($_POST["etat"]) &&
         isset($_POST["annee_exp"]) &&
         isset($_POST["routes_pre"]) &&
         isset($_POST["pref_veh"]) &&
         isset($_POST["comp_spe"])
-    ) {
+    ) 
+    {    
+
         if (
             !empty($_POST["etat"]) &&
-            !empty($_POST["annee_exp"]) &&
+            !empty($_POST["annee_exp"   ]) &&
             !empty($_POST["routes_pre"]) &&
             !empty($_POST["pref_veh"]) &&
             !empty($_POST["comp_spe"])
@@ -34,11 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
                 $_POST["routes_pre"],
                 $_POST["pref_veh"],
                 $_POST["comp_spe"]
+               
             );
-
-            $trajetT->ajouter($trajet);
+            echo('oooh');
+            echo($v);
+            $trajetT->ajouter($trajet,$v);
             // Redirect to the listtrajet.php page after successful addition
-            header('Location: listtrajet.php');
+            //header('Location: listtrajet.php');
             exit; // Ensure no further code is executed after the redirection
         } else {
             $error = "Missing information";
@@ -58,11 +71,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
      <meta name="keywords" content="">
      <meta name="author" content="Tooplate">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-     <link rel="stylesheet" href="../asset/frontoffice/css/bootstrap.min.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/css/font-awesome.min.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/animate.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/owl.carousel.css">
-     <link rel="stylesheet" href="../asset/frontoffice/css/owl.theme.default.min.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/bootstrap.min.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/css/font-awesome.min.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/animate.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/owl.carousel.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/owl.theme.default.min.css">
      <style>
           select {
               width: 180%;
@@ -94,15 +107,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
             color: #b1fa07;
             background-color: #252525;
         }
+        .background {
+	background-image: url("../../asset/frontoffice/img/slider3.jpg") !important;
+}
+
+.styleTable{
+      color:black;
+      border-color: white !important;
+    }
+    .tableheader{
+     color:white;
+     background-color:black;
+     border: 2px solid white;
+    }
          
      </style>
 
      <!-- MAIN CSS -->
-     <link rel="stylesheet" href="../asset/frontoffice/css/tooplate-style.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/tooplate-style.css">
 
 </head>
-<body>
-<body  id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body class="background" id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
 <!-- PRE LOADER -->
 <section class="preloader">
@@ -121,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
                     <span class="icon icon-bar"></span>
                </button>
                <div class="logo">
-                    <img src="../asset/frontoffice/img/logo.png" class="imglogo" alt="">
+                    <img src="../../asset/frontoffice/img/logo.png" class="imglogo" alt="">
                </div>
           </div>
           <!-- MENU LINKS -->
@@ -136,8 +161,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
      </div>
 </section>
 
-<a href="listvehicule.php">Back to list</a>
-<hr>
+
+<center>
+            <h1 style="color:#b1fa07;">Ajouter Trajet</h1>
+        </center>
 
 <div id="error">
    <?php echo $error; ?>
@@ -145,23 +172,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
     <!-- Your HTML body content -->
     <form method="POST" action="addtrajet.php" id="trajetForm">
     <input type="hidden" name="formType" value="trajet">
+    <input type="hidden" name="idVehicule" value="<?= $v; ?>">
 
         <section id="rend">
-     <table width="80%" style="margin: 0 auto; border-collapse: collapse; border: 2px solid black; background-color: #f2f2f2;">
-       <tr>
-         <td colspan="6" align="center" style="border-bottom: 2px solid black;">
+     <table width="80%" style="margin: 0 auto; border-collapse: collapse; border: 2px solid white; background-color: transparent;">
+       <tr class="tableheader">
+         <td colspan="6" align="center" style="border-bottom: 2px solid white;">
            <b id="mod">Trajet</b>
          </td>
        </tr>
-       <tr>
-         <td align="center" width="16.67%" style="border-right: 2px solid black;"><b>Etat</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid black;"><b>Année d'expérience</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid black;"><b>Routes préférées</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid black;"><b>Préférence de véhicule</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid black;"><b>Compétences spéciales</b></td>
+       <tr class="tableheader">
+         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Etat</b></td>
+         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Année d'expérience</b></td>
+         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Routes préférées</b></td>
+         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Préférence de véhicule</b></td>
+         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Compétences spéciales</b></td>
        </tr>
-       <tr style="border-top: 2px solid black;">
-         <td style="border-right: 2px solid black;">
+       <tr style="border-top: 2px solid white;">
+         <td style="border-right: 2px solid white;">
            <b><div class="input-group mb-3">
              <select id="etat" name="etat">
                <option value="Tunis">Tunis</option>
@@ -192,12 +220,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
              </select>
            </div></b>
          </td>
-         <td align="center" width="16.67%" style="border-right: 2px solid black;">
+         <td align="center" width="16.67%" style="border-right: 2px solid white;">
            <input value="" id="annee_exp" name="annee_exp" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_annee"></div>
          </td>
-         <td style="border-right: 2px solid black;"><b><input value="" id="routes_pre" name="routes_pre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_route"></div></b></td>
-         <td style="border-right: 2px solid black;"><b><input value="" id="pref_veh" name="pref_veh" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_preference"></div></b></td>
-         <td style="border-right: 2px solid black;"><b><input value="" id="comp_spe" name="comp_spe" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_competence"></div></b></td>
+         <td style="border-right: 2px solid white;"><b><input value="" id="routes_pre" name="routes_pre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_route"></div></b></td>
+         <td style="border-right: 2px solid white;"><b><input value="" id="pref_veh" name="pref_veh" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_preference"></div></b></td>
+         <td style="border-right: 2px solid white;"><b><input value="" id="comp_spe" name="comp_spe" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_competence"></div></b></td>
        </tr>
      </table>
    </section>
@@ -214,7 +242,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
 
     <!-- Add your scripts or other body content if needed -->
 </body>
-
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
 <footer data-stellar-background-ratio="5">
      <div class="container">
           <div class="row">
@@ -251,7 +281,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
                     </div>
                     <div class="col-md-2 col-sm-2 text-align-center">
                          <div class="angle-up-btn"> 
-                             <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i class="fa fa-angle-up"></i></a>
+                             <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s">TOP</a>
                          </div>
                     </div>   
                </div>
@@ -259,15 +289,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
           </div>
 </footer>
 
+
 <!-- SCRIPTS -->
-<script src="../asset/frontoffice/js/jquery.js"></script>
-<script src="../asset/controllerjs/bootstrap.min.js"></script>
-<script src="../asset/frontoffice/js/jquery.sticky.js"></script>
-<script src="../asset/frontoffice/js/jquery.stellar.min.js"></script>
-<script src="../asset/frontoffice/js/jquery.sticky.js"></script>
-<script src="../asset/frontoffice/js/smoothscroll.js"></script>
-<script src="../asset/frontoffice/js/owl.carousel.min.js"></script>
-<script src="../asset/frontoffice/js/custom.js"></script>
-<script src="../asset/frontoffice/js/trajet.js"></script>
+<script src="../../asset/frontoffice/js/jquery.js"></script>
+<script src="../../asset/controllerjs/bootstrap.min.js"></script>
+<script src="../../asset/frontoffice/js/jquery.sticky.js"></script>
+<script src="../../asset/frontoffice/js/jquery.stellar.min.js"></script>
+<script src="../../asset/frontoffice/js/jquery.sticky.js"></script>
+<script src="../../asset/frontoffice/js/smoothscroll.js"></script>
+<script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
+<script src="../../asset/frontoffice/js/custom.js"></script>
+<script src="../../asset/frontoffice/js/trajet.js"></script>
 
 </html>

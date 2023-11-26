@@ -1,12 +1,24 @@
 <?php
 
-require '../config.php';  // Assuming 'config.php' contains the database connection logic
+require '../../config.php';  // Assuming 'config.php' contains the database connection logic
 
 class VehiculeC
 {
     public function listVehicule()
     {
         $sql = "SELECT * FROM vehicule";
+        $db = config::getConnexion();
+        try {
+            $liste = $db->query($sql);
+            return $liste;
+        } catch (Exception $e) {
+            die('Error:' . $e->getMessage());
+        }
+    }
+
+    public function listVehiculeuser()
+    {
+        $sql = "SELECT * FROM vehicule where user = 2";
         $db = config::getConnexion();
         try {
             $liste = $db->query($sql);
@@ -63,7 +75,7 @@ function ajouter($vehicule)
 
     function showVehicule($id)
     {
-        $sql = "SELECT * FROM vehicule WHERE vehicle_id = $id";
+        $sql = "SELECT * FROM vehicule WHERE vehicle_id = $id ";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -74,6 +86,8 @@ function ajouter($vehicule)
             die('Error: ' . $e->getMessage());
         }
     }
+
+    
 
     function updateVehicule($vehicule, $id)
     {
@@ -106,5 +120,19 @@ function ajouter($vehicule)
             echo 'Error: ' . $e->getMessage();
         }
     }
+    public function searchvehiculle($modele)
+    {
+       
+        $sql = "SELECT *FROM vehicule WHERE modele = :modele";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare("SELECT *FROM vehicule WHERE modele LIKE :modele");
+            $query->execute(['modele' => '%' . $modele . '%']);
+            return $query->fetchAll();
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
 }
+
 ?>
