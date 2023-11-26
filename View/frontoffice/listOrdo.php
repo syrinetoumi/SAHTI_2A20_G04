@@ -93,7 +93,7 @@ $tab = $c->listOrdo();
 
 
         <tr>
-            <td><?= $ordo['idordo']; ?></td>
+            <td><?= $ordo['numMedic']; ?></td>
             <td><?= $ordo['nommed']; ?></td>
             <td><?= $ordo['dosage']; ?></td>
             <td><?= $ordo['duree']; ?></td>
@@ -101,11 +101,11 @@ $tab = $c->listOrdo();
             <td align="center">
                 <form method="POST" action="updateOrdo.php">
                     <input type="submit" name="update" value="Update">
-                    <input type="hidden" value=<?PHP echo $ordo['idordo']; ?> name="id">
+                    <input type="hidden" value=<?PHP echo $ordo['numMedic']; ?> name="id">
                 </form>
             </td>
             <td>
-                <a href="deleteOrdo.php?idordo=<?php echo $ordo['idordo']; ?>">Delete</a>
+                <a href="deleteOrdo.php?numMedic=<?php echo $ordo['numMedic']; ?>">Delete</a>
             </td>
         </tr>
     <?php

@@ -1,9 +1,8 @@
 <?php
-include "../../Controller/MedicC.php";
+include "../../Controller/HistoC.php";
 
-$c = new MedicC();
-$tab = $c->listMedic();
-
+$histoC = new HistoC();
+$histoData = $histoC->listHisto();
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +28,7 @@ $tab = $c->listMedic();
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="../../asset/backoffice/css/tooplate.css">
     <link rel="stylesheet" href="../../asset/backoffice/css/tablemedback.css"> 
+    <link rel="stylesheet" href="../../asset/frontoffice/css/ordoform.css"> 
 </head>
 
 <body class="bg03">
@@ -98,66 +98,54 @@ $tab = $c->listMedic();
                 </div>
             
     
-                <section class="med" >
-          <center><div>
-                 <h4 >Gérer les médicaments</h4>
-               </div></center>
-               <br><br><br><br><br>
-        <form id="form">
-        <center><table class="dataTable" id="medicationTable">
-            <thead>
-                <tr class="col1">
-                    <th>Id</th>
-                    <th>Medicament</th>
-                    <th>Photo</th>
-                    <th></th>
-                    <th>Actions</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                    <?php
-          foreach ($tab as $medic) {
-          ?>
-
-          <tr>
-                    <td><?= $medic['idmed']; ?></td>
-                    <td><?= $medic['medicament']; ?></td>
+                </section>
+                <section class="ordonnance">
+                <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
                     
-                    <td>
-                    <img src="../../asset/frontoffice/images/<?php echo $medic['photo']; ?>" class="imgmed">
-                    </td>
-          <td>
-          <button class="bouton2" onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button>
-          </td>
-                    <td align="center">
-                         <form method="POST" action="updateMedicAdmin.php">
-                              <button class="bouton2" type="submit" name="update" >Modifier</button>
-                              <input type="hidden" value="<?= $medic['idmed']; ?>" name="id">
-                         </form>
-                    </td>
-                    <td>
-                    <button class="bouton2" onclick="window.location.href='deleteMedicAdmin.php?idmed=<?= $medic['idmed']; ?>'">Supprimer</button>
-
-                    </td>
-                         </tr>
-          <?php
-          }
-          ?>
-                              <tr>
-                              <td></td>
-                              <td><span id="erreurmedic"></span></td>
-                              <td><span id="erreurphoto"></span></td>
-                              <td><span id="erreurlien"></span></td>
-                              <td></td>
-                         </tr>
+    <?php
+    foreach ($histoData as $idOrdo => $data) {
+    ?>
+        <form id="form">
+            <h4>#Id :<?= $idOrdo; ?></h4>
+            <center>
+                <table class="dataTable" id="medicationTable">
+                    <thead>
+                        <tr class="col1">
+                            <th>N°</th>
+                            <th>Nom du médicament</th>
+                            <th>Dosages</th>
+                            <th>Durée du traitement</th>
+                            <th>Remarques</th>
+                            <th>idpat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($data as $row) {
+                        ?>
+                            <tr>
+                                <td><?= $row['numMedic']; ?></td>
+                                <td><?= $row['nommed']; ?></td>
+                                <td><?= $row['dosage']; ?></td>
+                                <td><?= $row['duree']; ?></td>
+                                <td><?= $row['rq']; ?></td>
+                                <td><?= $row['idpat']; ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
-               </table></center>
-               <button type="button" class="bouton" onclick="location.href='addMedicAdmin.php';">Ajouter un médicament</button>
-               <br><br><br><br><br>
-               
-         </form>
-    </section>
+                </table>
+            </center>
+            <br><br><br><br><br>
+        </form>
+    <?php
+    }
+    ?>
+                </div>
+</section>
+
+     
 
 
 

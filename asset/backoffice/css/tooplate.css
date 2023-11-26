@@ -343,7 +343,7 @@ label {
 .page-item.active .page-link {
   background-color: #e9ecef;
   border-color: #dee2e6;
-  color: black;
+  color: white;
 }
 
 .tm-pagination {

@@ -47,9 +47,6 @@ if (
 </head>
 
 <body class="reservation-page" background="../../asset/frontoffice/images/pharmacien.jpg">
-    <a href="listOrdo.php">Retour </a>
-    <hr>
-
     <div id="error">
         <?php echo $error; ?>
     </div>
@@ -71,11 +68,17 @@ if (
                                             <form action="" method="POST" id="form" class="custom-form booking-form">
                                                 <table class="table" >
                                                 <tr>
-                                                        <td><label for="nommed">Nom du médicament :</label></td>
-                                                        <td>
-                                                            <input type="text" id="nommed" name="nommed" />                                           
-                                                        </td>
-                                                        <td><span id="erreurnommed" style="color: red"></span></td>
+                                                <td><label for="nommed">Nom du médicament :</label></td>
+                                                <td>
+                                                <select id="nommed" name="nommed">
+                                                    <?php
+                                                    $ledicOptions = $ordoC->getLedicOptions();
+                                                    foreach ($ledicOptions as $option) {
+                                                        echo "<option value='" . $option['medicament'] . "'>" . $option['medicament'] . "</option>";
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
                                                     </tr>
                                                     <tr>
                                                         <td><label for="dosage">Dosage :</label></td>
@@ -102,7 +105,7 @@ if (
                                                     </tr>
 
                                                     <td>
-                                                        <button type="submit" class="bouton" >Enregistrer</button>
+                                                        <button type="submit" class="bouton" onclick="location.href='listOrdo.php';">Enregistrer</button>
                                                     </td>
                                                     <td>
                                                         <button type="reset" class="bouton" >Reset</button>
@@ -127,5 +130,5 @@ if (
                 </section>
                 <br><br><br><br>          
 </body>
-<script src="../../asset/frontoffice/js/ordonnance.js"></script>
+
 </html>

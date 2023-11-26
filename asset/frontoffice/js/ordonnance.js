@@ -55,14 +55,9 @@ document.getElementById("form").addEventListener("submit", function (e) {
 
 */
     function ValiderOrdonnance() {
-    var nommed = document.getElementById("nommed").value;
     var dosage = document.getElementById("dosage").value;
     var duree = document.getElementById("duree").value;
 
-    if (!ValiderNomMedicament(nommed)) {
-        alert("Le nom du médicament est incorrect");
-        return false;
-    }
 
     if (!ValiderDosage(dosage)) {
         alert("Le dosage est incorrect");
@@ -77,10 +72,7 @@ document.getElementById("form").addEventListener("submit", function (e) {
     return true;
   }
 
-  function ValiderNomMedicament(nommed) {
-    var pattern = /^[a-zA-Z0-9]+$/;
-    return pattern.test(nommed);
-}
+
 
 
 

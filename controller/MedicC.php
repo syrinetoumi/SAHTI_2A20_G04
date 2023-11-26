@@ -136,6 +136,73 @@ class MedicC
             return array(); // Return an empty array in case of an error
         }
     }
+
+    public function searchFav($search) {
+        $search = "%{$search}%";
+        $sql = "SELECT m.* FROM medic m
+                JOIN fav f ON m.idmed = f.idmed
+                WHERE m.medicament LIKE :search";
     
+        $db = config::getConnexion();
+    
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':search', $search, PDO::PARAM_STR);
+            $stmt->execute();
+    
+            $medicArray = array();
+    
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $medicArray[] = $row;
+            }
+    
+            return $medicArray;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return array(); // Return an empty array in case of an error
+        }
+    }
+
+    public function addToFavorites($medicId)
+{
+    $sql = "INSERT INTO fav (idmed) VALUES (:idmed)";
+    $db = config::getConnexion();
+
+    try {
+        $query = $db->prepare($sql);
+        $query->execute([
+            'idmed' => $medicId,
+        ]);
+
+        // Return a success message
+        header('Content-Type: application/json');
+        echo json_encode(['success' => true, 'message' => 'Medication added to favorites successfully.']);
+        exit();
+    } catch (Exception $e) {
+        // Return an error message if the insertion fails
+        header('Content-Type: application/json');
+        echo json_encode(['success' => false, 'message' => 'Error adding medication to favorites.']);
+        exit();
+    }
+}
+
+    public function listFav()
+    {
+        $sql = "SELECT m.* FROM medic m JOIN fav f ON m.idmed = f.idmed";
+        $db = config::getConnexion();
+
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $favorites = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $favorites;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return array(); // Return an empty array in case of an error
+        }
+    }
+
 }
 

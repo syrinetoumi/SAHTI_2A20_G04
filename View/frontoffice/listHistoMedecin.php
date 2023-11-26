@@ -1,3 +1,10 @@
+<?php
+include "../../Controller/HistoC.php";
+
+$histoC = new HistoC();
+$histoData = $histoC->listHisto();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,54 +60,59 @@
 
               <div class="collapse navbar-collapse">
                    <ul class="nav navbar-nav navbar-right">
-                       <!-- <li><a href="#about" class="smoothScroll">Historique des ordonnances</a></li>-->
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
-                        <li class="appointment-btn"><a href="indexpatient.html">Acceuil</a></li>
+                        <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
 
                    </ul>
               </div>
 
          </div>
     </section>
-    <section class="ordonnance" >
-        <center><table class="dataTable" id="medicationTable">
-            <thead>
-                <tr class="col1">
-                    <th>N°</th>
-                    <th>Nom du médicament</th>
-                    <th>Dosages</th>
-                    <th>Durée du traitement</th>
-                    <th>Remarques</th>
-                </tr>
-            </thead>
-         <!-- <tbody>
-                <tr>
-                  <td><input type="text" name="Num[]"></td>
-                  <td><input type="text" name="medicationName[]" required></td>
-                  <td><input type="text" name="Dosages[]" required></td>
-                  <td><input type="text" name="Durée[]" required></td>
-                  <td><input type="text" name="Remarques[]" required></td>
-                </tr>
-            </tbody>-->
-         </table></center>
-         <br><br><br><br><br>
-         <center>
-        <table class="dataTable" id="medicationTable">
-            <tr class="col1">
-                <th>Créé par :</th>
-                <th></th>
-                <th>Diagnostic :</th>
-                <th></th>
-            </tr>
-        </table>
-    </center>
-        
-         
+    <section class="ordonnance">
+        <?php
+        foreach ($histoData as $idOrdo => $data) {
+        ?>
+        <form id="form">
+            <center>
+                <table class="dataTable" id="medicationTable">
+                    <thead>
+                        <tr class="col1">
+                            <th>N°</th>
+                            <th>Nom du médicament</th>
+                            <th>Dosages</th>
+                            <th>Durée du traitement</th>
+                            <th>Remarques</th>
+                            <th>idpat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($data as $row) {
+                        ?>
+                            <tr>
+                                <td><?= $row['numMedic']; ?></td>
+                                <td><?= $row['nommed']; ?></td>
+                                <td><?= $row['dosage']; ?></td>
+                                <td><?= $row['duree']; ?></td>
+                                <td><?= $row['rq']; ?></td>
+                                <td><?= $row['idpat']; ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </center>
+            <button type="button" class="bouton"  onclick="location.href='deleteHisto.php?idordo=<?= $idOrdo ?>';">Effacer l'ordonnance</button>
+            <br><br><br><br><br>
+        </form>
+        <?php
+        }
+        ?>
     </section>
-
      
 
-     <!-- SCRIPTS -->
+     <!-- SCRIPTS  <script src="../../asset/frontoffice/js/ordonnance.js"></script>-->
      <script src="../../asset/frontoffice/js/jquery.js"></script>
      <script src="../../asset/frontoffice/js/bootstrap.min.js"></script>
      <script src="../../asset/frontoffice/js/jquery.sticky.js"></script>

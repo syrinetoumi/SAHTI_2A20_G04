@@ -11,6 +11,13 @@ if (isset($_GET['search'])) {
  } else {
      $tab = $c->listMedic();
  }
+ if (isset($_POST['idmed'])) {
+     $medicId = $_POST['idmed'];
+     $c->addToFavorites($medicId);
+     // Optionally, you can redirect the user or display a success message here
+     header("Location: listMedic.php");
+     exit();
+ }
  
 
 ?>
@@ -103,7 +110,12 @@ if (isset($_GET['search'])) {
                               <input type="submit" class="search-submit button" value="&#xf002" />
                          </form>
                          </div>
-                         </div></section>
+                         <div class="header-cart">
+                         <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+                         <span>0</span>
+                         </div>
+                         </div>
+</section>
 
 
 
@@ -119,22 +131,22 @@ if (isset($_GET['search'])) {
                         </div>
                         <div class="product-content">
                             <div class="product-info">
-                              <p class="product-title"><?= $medic['medicament']; ?></p>
-					     <button class="bouton2" onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button>
+                                <center><p class="product-title"><?= $medic['medicament']; ?></p></center>
+                              <button class="bouton2" onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button>
+                              <button class="bouton3" onclick="addToFavorites(<?php echo $medic['idmed']; ?>)">+</button>
+                              <button class="bouton4">-</button>
                             </div>
+                          
                         </div>
                     </div>
                 </div>
             <?php } ?>
         </div>
     </div>
-	<br><br><br><br><br>
-<button type="button" class="bouton" >Voir plus</button>
-               <br><br><br><br><br>
-               
+    <br><br><br><br><br>
+    <button type="button" class="bouton">Voir plus</button>
+    <br><br><br><br><br>
 </section>
-
-
 
 
 
@@ -203,6 +215,12 @@ if (isset($_GET['search'])) {
      <script src="../../asset/frontoffice/js/smoothscroll.js"></script>
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
+     <script src="../../asset/frontoffice/js/cartanimation.js"></script>
+     <script>
+    function addToFavorites(medicId) {
+        $.post('listMedic.php', { idmed: medicId }, 'json');
+    }
+</script>
 
 </body>
 </html>

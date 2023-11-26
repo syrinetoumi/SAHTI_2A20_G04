@@ -1,6 +1,6 @@
 .dataTable {
     display: block;
-    width: 80%;
+    width: 50%;
     margin: 1em 0;
   }
   
@@ -21,7 +21,7 @@
   .dataTable td, .dataTable th {
     padding: .400em;
     line-height: 1.5em;
-    border-bottom: 1px dashed #ccc;
+    border-bottom: 10px  #b1fa07;;
     box-sizing: border-box;
     overflow-x: hidden;
     overflow-y: auto;
@@ -30,10 +30,11 @@
   .dataTable th {
     text-align: center;
     background: #1c1c1c;
-    border-bottom: 1px dashed #aaa;
+    border-bottom: 10px #b1fa07;
   }
   .dataTable td {
     align-items: center;
+    width:20px;
   }
   
   .dataTable tbody tr {
@@ -148,3 +149,7 @@ input:hover {
     color: #1c1c1c !important;
   }
 
+
+  .med{
+    background-color: rgba(0,0,0,.60)!important;;
+  }

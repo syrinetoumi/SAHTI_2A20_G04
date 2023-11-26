@@ -1,53 +1,29 @@
 <?php
-/*
 
-include '../../controller/HistoC.php';
-include '../../model/Histo.php';
+include "../../Controller/OrdoC.php";
 
 $error = "";
 
-// create client
-$histo = null;
-
-// create an instance of the controller
-$histoC = new HistoC();
-if (
-    isset($_POST["idpat"]) &&
-    isset($_POST["diagnostic"]) 
-) {
-    if (
-        !empty($_POST['idpat']) &&
-        !empty($_POST["diagnostic"]) 
-    ) {
-        $histo = new HistoC(
-            null,
-            $_POST['idpat'],
-            $_POST['diagnostic']
-        );
-        $histoC->addHisto($histo);
-        header('Location:listHisto.php');
-    } else
-        $error = "Missing information";
-}*/
-require 'C:\xampp\htdocs\projetweb - Copie\config.php';
-$error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debug: Print POST data
     print_r($_POST);
 
     if (isset($_POST["idpatient"])) {
         $groupIdentifier = $_POST["idpatient"];
         
-        // Assuming you have a database connection
         $db = config::getConnexion();
         
         try {
-            $sql = "UPDATE ordo SET idpat = :idpat WHERE idpat IS NULL";
+            $sql = "UPDATE ordo SET idpat = :idpat WHERE idpat IS NULL OR idpat = 0";
+
             $query = $db->prepare($sql);
             $query->bindValue(':idpat', $groupIdentifier);
             $query->execute();
             
             echo 'Update successful!';
+
+            // Create an instance of OrdoC and call the truncateListOrdo method
+            $ordoC = new OrdoC();
+            $ordoC->truncateListOrdo();
         } catch (PDOException $e) {
             echo 'Error: ' . $e->getMessage();
         }
@@ -57,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
-
 
 <html lang="en">
 

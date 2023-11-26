@@ -1,7 +1,7 @@
 <?php
 class Ordo
 {
-    private ?int $id = null;
+    private ?int $numMedic = null;
     private ?string $nommed = null;
     private ?string $dosage = null;
     private ?string $duree = null;
@@ -9,7 +9,7 @@ class Ordo
 
     public function __construct($id = null, $n, $p, $a, $d)
     {
-        $this->id = $id;
+        $this->numMedic = $id;
         $this->nommed = $n;
         $this->dosage = $p;
         $this->duree = $a;
@@ -19,7 +19,7 @@ class Ordo
 
     public function getidordo()
     {
-        return $this->id;
+        return $this->numMedic;
     }
 
 

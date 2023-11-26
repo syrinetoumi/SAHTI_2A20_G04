@@ -14,7 +14,7 @@ if (isset($_POST["nommed"]) && isset($_POST["dosage"]) && isset($_POST["duree"])
         }
         $ordo = new Ordo(
             null,
-            $_POST['nommed'],
+            $_POST['numMedic'],
             $_POST['dosage'],
             $_POST['duree'],
             $_POST['rq']
@@ -41,9 +41,6 @@ if (isset($_POST["nommed"]) && isset($_POST["dosage"]) && isset($_POST["duree"])
 </head>
 
 <body class="reservation-page" background="../../asset/frontoffice/images/pharmacien.jpg">
-    <button><a href="listOrdo.php">Back to list</a></button>
-    <hr>
-
     <div id="error">
         <?php echo $error; ?>
     </div>
@@ -106,7 +103,7 @@ if (isset($_POST["nommed"]) && isset($_POST["dosage"]) && isset($_POST["duree"])
                                                     </tr>
 
                                                     <td>
-                                                        <button type="submit" class="bouton" >Enregistrer</button>
+                                                        <button type="submit" class="bouton" onclick="location.href='listOrdo.php';">Enregistrer</button>
                                                     </td>
                                                     <td>
                                                         <button type="reset" class="bouton" >Reset</button>

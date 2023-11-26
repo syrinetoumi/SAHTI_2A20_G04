@@ -38,7 +38,7 @@ if (isset($_POST["medicament"]) && isset($_POST["photo"]) && isset($_POST["lien"
 
         if (!$error) {
             $medicC->updateMedic($medic, $_POST['id']);
-            header('Location: listMedic.php');
+            header('Location: listMedicAdmin.php');
             exit();
         }
     } else {
@@ -180,7 +180,7 @@ if (isset($_POST["medicament"]) && isset($_POST["photo"]) && isset($_POST["lien"
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                        <button type="submit" class="btn btn-primary">Modifier
+                                        <button type="submit" class="btn btn-primary" onclick="location.href='listMedicAdmin.php';">Modifier
                                         </button>
                                     </div>
                                 </div>

@@ -34,7 +34,7 @@ if (
             );
 
             $medicC->addMedic($medic);
-            header('Location: listMedic.php');
+            header('Location: listMedicAdmin.php');
         } else {
             $error = "Failed to upload image!";
         }
@@ -71,7 +71,11 @@ if (
 </head>
 
 <body class="bg02">
-    
+
+    <div id="error">
+        <?php echo $error; ?>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -135,10 +139,7 @@ if (
                 </nav>
             </div>
         </div>
-        <!-- row -->
-        <div id="error">
-        <?php echo $error; ?>
-    </div>
+
   
         <div class="row tm-mt-big">
             <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
@@ -167,7 +168,7 @@ if (
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                        <button type="submit" class="btn btn-primary">Enregistrer  </button>
+                                        <button type="submit" class="btn btn-primary" onclick="location.href='listMedicAdmin.php';">Enregistrer  </button>
                                     </div>
                                 </div>
                                 

@@ -35,12 +35,13 @@ class OrdoC
         }
     }
 
+
     function deleteOrdo($ide)
     {
-        $sql = "DELETE FROM ordo WHERE idordo =:idordo";
+        $sql = "DELETE FROM ordo WHERE numMedic =:numMedic";
         $db = config::getConnexion();
         $req = $db->prepare($sql);
-        $req->bindValue(':idordo', $ide);
+        $req->bindValue(':numMedic', $ide);
 
         try {
             $req->execute();
@@ -51,7 +52,7 @@ class OrdoC
 
     function showOrdo($id)
     {
-        $sql = "SELECT * from ordo where idordo = $id";
+        $sql = "SELECT * FROM ordo WHERE numMedic = $id";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
@@ -74,7 +75,7 @@ class OrdoC
                     dosage = :dosage, 
                     duree = :duree,
                     rq = :rq
-                WHERE idordo = :id'
+                WHERE numMedic = :id'
             );
             
             $query->execute([
@@ -91,5 +92,51 @@ class OrdoC
             echo 'Error: ' . $e->getMessage();
         }
     }
+    
+    public function truncateListOrdo() {
+        $db = config::getConnexion();
+        
+        try {
+            // Check if the histo table exists
+            $archiveTableName = "histo";
+            $sqlCheckTable = "SHOW TABLES LIKE :table";
+            $queryCheckTable = $db->prepare($sqlCheckTable);
+            $queryCheckTable->bindValue(':table', $archiveTableName);
+            $queryCheckTable->execute();
+    
+            // Get the maximum idordo from histo table
+            $sqlMaxIdOrdo = "SELECT MAX(idordo) AS max_idordo FROM $archiveTableName";
+            $queryMaxIdOrdo = $db->query($sqlMaxIdOrdo);
+            $maxIdOrdo = $queryMaxIdOrdo->fetchColumn();
+    
+            // Move data to the histo table
+            $sqlMove = "INSERT INTO $archiveTableName (numMedic, nommed, dosage, duree, rq, idpat, idordo) SELECT numMedic, nommed, dosage, duree, rq, idpat, :idordo FROM ordo";
+            $queryMove = $db->prepare($sqlMove);
+            $queryMove->bindValue(':idordo', $maxIdOrdo + 1);
+            $queryMove->execute();
+            
+            // Truncate the original table
+            $sqlTruncate = "TRUNCATE TABLE ordo";
+            $queryTruncate = $db->prepare($sqlTruncate);
+            $queryTruncate->execute();
+            
+            // Optionally, you might want to handle any additional tasks after truncating the table.
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+        }
+    }
+    
+    public function getLedicOptions()
+{
+    $sql = "SELECT idmed, medicament FROM medic"; 
+    $db = config::getConnexion();
+    try {
+        $options = $db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        return $options;
+    } catch (Exception $e) {
+        die('Error:' . $e->getMessage());
+    }
+}
+
     
 }
