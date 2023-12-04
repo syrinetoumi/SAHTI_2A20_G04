@@ -143,49 +143,39 @@ if (isset($_POST["medicament"]) && isset($_POST["photo"]) && isset($_POST["lien"
         <div id="error">
         <?php echo $error; ?>
     </div>
+    
+    <br><br><br><br><br>
+    <section>
     <?php
     if (isset($_POST['id'])) {
         $medic = $medicC->showMedic($_POST['id']);
         
     ?>
-        <div class="row tm-mt-big">
-            <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
-                <div class="bg-white tm-block">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="tm-block-title d-inline-block">Modifier le médicament</h2>
-                        </div>
-                    </div>
-                    <div class="row mt-4 tm-edit-product-row">
-                        <div class="col-xl-7 col-lg-7 col-md-12">
-                    
-                            <form action="" class="tm-edit-product-form">
-                        
-                                <div class="input-group mb-3">
-                                    <label for="id" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Id</label>
-                                    <input  id="id" name="id" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" value="<?php echo $_POST['id'] ?>" readonly>
-                                </div>                              
-                                <div class="input-group mb-3">
-                                    <label for="medicament" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Nom médicament</label>                     
-                                    <input  id="medicament" name="medicament" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"
-                                        data-large-mode="true" value="<?php echo $medic['medicament'] ?>">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <label for="lien" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Lien</label>
-                                    <input  id="lien" name="lien" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-7 col-sm-7"  value="<?php echo $medic['lien'] ?>" >
-                                </div>
-                                <div class="input-group mb-3">
-                                        <label for="new_photo" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Nouvelle photo</label>   
-                                        <input id="new_photo" name="new_photo" type="file" />
-                                </div>
-                                <div class="input-group mb-3">
-                                    <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
-                                        <button type="submit" class="btn btn-primary" onclick="location.href='listMedicAdmin.php';">Modifier
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                            </form>
+        <form method="POST" enctype="multipart/form-data" id="form" > 
+  <table>
+      <thead>
+          <tr class="thead">
+          <th scope="col">Id</th>
+          <th scope="col">Medicament</th>
+          <th scope="col">Lien</th>
+          <th scope="col">Photo</th>
+          <th scope="col"></th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+          <td data-label="Name"> <input  id="medicament" name="medicament" type="text" value="<?php echo $_POST['id'] ?>" readonly></td>
+          <td data-label="Name"> <input  id="medicament" name="medicament" type="text" value="<?php echo $medic['medicament'] ?>"></td>
+          <td data-label="Title"><input  id="lien" name="lien" type="text" value="<?php echo $medic['lien'] ?>" ></td>
+          <td data-label="Website"> <input id="new_photo" name="new_photo" type="file" /></td>
+          <td data-label="Role"> <button type="submit"  onclick="location.href='listMedicAdmin.php';">Modifier  </button></td>
+          </tr>
+
+      </tbody>
+      </table>
+</form>
+    </section>
+       <br><br><br><br><br>
                             <?php
                                         }
                                         ?>
@@ -219,3 +209,112 @@ if (isset($_POST["medicament"]) && isset($_POST["photo"]) && isset($_POST["lien"
 </body>
 
 </html>
+
+
+
+<style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600;700&display=swap');
+  *{
+      font-family: 'Ubuntu', sans-serif;
+  
+  }
+  
+  .imgmed{
+      width: 100px;
+      height: 80px;
+    }
+  table {
+  /*   border: 1px solid #ccc; */
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+      font-family: 'Ubuntu', sans-serif;
+    font-size: 55px;
+    font-weight:700;
+    color:#00000090;
+    padding: 15px;
+  }
+  
+  table tr {
+    background-color: #ffffff90;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  .thead{
+    background-color: rgba(0, 0, 0, 0.5);;
+    color:#fff;
+  }
+  
+  table th,
+  table td {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  table th {
+    font-size: 20px;
+    letter-spacing: .1em;
+    text-transform: capitalize;
+  }
+  
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+    .thead{
+    background-color: rgb(67 56 202);
+    color:#fff;
+  }
+  
+    table caption {
+    font-size: 35px;
+    font-weight:700;
+    color:#00000090;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+</style>

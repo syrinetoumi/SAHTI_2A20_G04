@@ -3,7 +3,10 @@ include "../../Controller/HistoC.php";
 
 $histoC = new HistoC();
 $histoData = $histoC->listHisto();
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,6 +35,13 @@ $histoData = $histoC->listHisto();
 
    
 </head>
+<style>
+  
+  .highlighted {
+      background-color: #b1fa07;
+  }
+  
+  </style>
 <body background="../../asset/frontoffice/images/pharmacien.jpg"  id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
     <!-- PRE LOADER -->
     <section class="preloader">
@@ -62,7 +72,8 @@ $histoData = $histoC->listHisto();
                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
-
+                        <li class="appointment-btn"><a href="#" onclick="toggleHighlight()"><img src="../../asset/frontoffice/images/highlight.png" alt="Highlight"></a></li>
+                     
                    </ul>
               </div>
 
@@ -104,6 +115,8 @@ $histoData = $histoC->listHisto();
                 </table>
             </center>
             <button type="button" class="bouton"  onclick="location.href='deleteHisto.php?idordo=<?= $idOrdo ?>';">Effacer l'ordonnance</button>
+            <button type="button" class="bouton"  onclick="downloadOrdonnance(<?= $idOrdo ?>);">Télécharger l'ordonnance</button>
+    <br><br><br><br><br>
             <br><br><br><br><br>
         </form>
         <?php
@@ -123,6 +136,32 @@ $histoData = $histoC->listHisto();
      <script src="../../asset/frontoffice/js/smoothscroll.js"></script>
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
+     <script src="../../asset/frontoffice/js/highlight.js"></script>
+     <script>
+function downloadOrdonnance(idOrdo) {
+    // Make an AJAX request to downloadHisto.php with the idOrdo parameter
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "downloadHisto.php?idordo=" + idOrdo, true);
+    xhr.responseType = "blob";
+
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            // Create a link element and trigger a click to start the download
+            var link = document.createElement("a");
+            link.href = window.URL.createObjectURL(xhr.response);
+            link.download = "ordonnance.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            console.error("Failed to download the ordonnance. Status: " + xhr.status);
+        }
+    };
+
+    xhr.send();
+}
+
+</script>
 
 </body>
 </html>

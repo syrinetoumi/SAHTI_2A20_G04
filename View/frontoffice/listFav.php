@@ -51,6 +51,13 @@ if (isset($_GET['search'])) {
 
      
 </head>
+<style>
+  
+  .highlighted {
+      background-color: #b1fa07;
+  }
+  
+  </style>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
     <!-- PRE LOADER -->
@@ -81,6 +88,8 @@ if (isset($_GET['search'])) {
                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
+                        <li class="appointment-btn"><a href="#" onclick="toggleHighlight()"><img src="../../asset/frontoffice/images/highlight.png" alt="Highlight"></a></li>
+                     
                    </ul>
               </div>
 
@@ -197,6 +206,8 @@ if (isset($_GET['search'])) {
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
      <script src="../../asset/frontoffice/js/cartanimation.js"></script>
+     <script src="../../asset/frontoffice/js/highlight.js"></script>
+     
 
 </body>
 </html>

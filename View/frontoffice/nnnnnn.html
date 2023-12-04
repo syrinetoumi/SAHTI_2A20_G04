@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Custom Highlighting</title>
+</head>
+<body>
+    <div id="content">
+        <p>This is some text that the user can select and highlight.</p>
+    </div>
+    <button onclick="highlightSelectedText()">Highlight Selected Text</button>
+    <script src="highlight.js"></script>
+</body>
+</html>
+
+<style>
+   
+   body {
+    font-family: Arial, sans-serif;
+}
+
+#content {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.highlighted {
+    background-color: yellow;
+}
+
+</style>
+
+<script>
+function getSelectedText() {
+    var text = '';
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type !== 'Control') {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+
+function highlightSelectedText() {
+    var selectedText = getSelectedText();
+    
+    if (selectedText) {
+        var content = document.getElementById('content');
+        var html = content.innerHTML;
+        var highlightedHtml = html.replace(new RegExp(selectedText, 'g'), `<span class="highlighted">${selectedText}</span>`);
+        content.innerHTML = highlightedHtml;
+    }
+}
+
+
+</script>

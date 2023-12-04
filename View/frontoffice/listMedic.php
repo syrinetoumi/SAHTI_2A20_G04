@@ -59,6 +59,13 @@ if (isset($_GET['search'])) {
 
      
 </head>
+<style>
+  
+  .highlighted {
+      background-color: #b1fa07;
+  }
+  
+  </style>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
     <!-- PRE LOADER -->
@@ -89,6 +96,7 @@ if (isset($_GET['search'])) {
                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
+                        <li class="appointment-btn"><a href="#" onclick="toggleHighlight()"><img src="../../asset/frontoffice/images/highlight.png" alt="Highlight"></a></li>
                    </ul>
               </div>
 
@@ -111,7 +119,7 @@ if (isset($_GET['search'])) {
                          </form>
                          </div>
                          <div class="header-cart">
-                         <img src="https://cdn-icons-png.flaticon.com/512/263/263142.png">
+                         <img src="../../asset/frontoffice/images/fav.png">
                          <span>0</span>
                          </div>
                          </div>
@@ -133,8 +141,9 @@ if (isset($_GET['search'])) {
                             <div class="product-info">
                                 <center><p class="product-title"><?= $medic['medicament']; ?></p></center>
                               <button class="bouton2" onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button>
-                              <button class="bouton3" onclick="addToFavorites(<?php echo $medic['idmed']; ?>)">+</button>
-                              <button class="bouton4">-</button>
+                              <button class="bouton3" onclick="addToFavorites(<?php echo $medic['idmed']; ?>)">
+                              <img src="../../asset/frontoffice/images/+.png" alt="Highlight">
+                              </button>
                             </div>
                           
                         </div>
@@ -216,6 +225,7 @@ if (isset($_GET['search'])) {
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
      <script src="../../asset/frontoffice/js/cartanimation.js"></script>
+     <script src="../../asset/frontoffice/js/highlight.js"></script>
      <script>
     function addToFavorites(medicId) {
         $.post('listMedic.php', { idmed: medicId }, 'json');

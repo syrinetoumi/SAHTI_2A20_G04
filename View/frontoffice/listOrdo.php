@@ -34,6 +34,14 @@ $tab = $c->listOrdo();
 
    
 </head>
+<style>
+  
+  .highlighted {
+      background-color: #b1fa07;
+  }
+  
+  </style>
+
 <body background="../../asset/frontoffice/images/pharmacien.jpg"  id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
     <!-- PRE LOADER -->
     <section class="preloader">
@@ -64,6 +72,7 @@ $tab = $c->listOrdo();
                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
                         <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
+                        <li class="appointment-btn"><a href="#" onclick="toggleHighlight()"><img src="../../asset/frontoffice/images/highlight.png" alt="Highlight"></a></li>
 
                    </ul>
               </div>
@@ -136,6 +145,7 @@ $tab = $c->listOrdo();
      <script src="../../asset/frontoffice/js/smoothscroll.js"></script>
      <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
      <script src="../../asset/frontoffice/js/custom.js"></script>
+     <script src="../../asset/frontoffice/js/highlight.js"></script>
 
 </body>
 </html>

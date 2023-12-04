@@ -194,14 +194,31 @@ background-color: white;
     padding-top: 5px;
     padding-bottom: 5px;
     margin-left: 10px;
+    
   }
 
   .bouton3:hover {
     background: #b1fa07;
     color: #1c1c1c !important;
   }
+ 
+/*  .bouton4 {
+    background: white;
+    border-radius: 15px;
+    color: #1c1c1c;
+    font-weight: 500;
+    font-size: 30;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+  }
 
+  .bouton4:hover {
+    background: #b1fa07;
+    color: #1c1c1c !important;
+  }
 
+*/
 
   .bouton {
     background: #b1fa07;

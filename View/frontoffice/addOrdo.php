@@ -130,5 +130,5 @@ if (
                 </section>
                 <br><br><br><br>          
 </body>
-
+<script src="../../asset/frontoffice/js/ordonnance.js"></script>
 </html>

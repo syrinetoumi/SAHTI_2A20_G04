@@ -1,0 +1,41 @@
+
+#togg{
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.theme-container {
+    width: 180px;
+    height: 68px;
+    border-radius: 50px;
+    border: 5px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .light-btn,
+  .dark-btn {
+    cursor: pointer;
+  }
+  
+  .light-active {
+    background-color: #fefeff;
+    margin: 0px 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  .dark-active {
+    background-color: #333;
+    margin: 0px 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+  }
+  
+  

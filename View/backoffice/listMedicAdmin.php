@@ -3,7 +3,13 @@ include "../../Controller/MedicC.php";
 
 $c = new MedicC();
 $tab = $c->listMedic();
-
+// Check if a search query is provided
+if (isset($_GET['search'])) {
+    $search = htmlspecialchars($_GET['search']);
+    $tab = $c->searchMedic($search);
+} else {
+    $tab = $c->listMedic();
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +34,8 @@ $tab = $c->listMedic();
     <link rel="stylesheet" href="../../asset/backoffice/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
     <link rel="stylesheet" href="../../asset/backoffice/css/tooplate.css">
-    <link rel="stylesheet" href="../../asset/backoffice/css/tablemedback.css"> 
+    <link rel="stylesheet" href="../../asset/backoffice/css/tablemedback.css">
+    <link rel="stylesheet" href="../../asset/frontoffice/css/search.css">  
 </head>
 
 <body class="bg03">
@@ -65,7 +72,7 @@ $tab = $c->listMedic();
                                 </div>
                             </li>-->
                             <li class="nav-item">
-                                <a class="nav-link" href="products.html">Ordonnances</a>
+                                <a class="nav-link" href="listOrdoAdmin.php">Ordonnances</a>
                             </li>
 
                             <li class="nav-item active">
@@ -97,73 +104,62 @@ $tab = $c->listMedic();
         </div>
                 </div>
             
-    
-                <section class="med" >
-          <center><div>
-                 <h4 >Gérer les médicaments</h4>
-               </div></center>
-               <br><br><br><br><br>
-        <form id="form">
-        <center><table class="dataTable" id="medicationTable">
-            <thead>
-                <tr class="col1">
-                    <th>Id</th>
-                    <th>Medicament</th>
-                    <th>Photo</th>
-                    <th></th>
-                    <th>Actions</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                    <?php
-          foreach ($tab as $medic) {
-          ?>
+    <br><br><br><br><br>
+    <section>
+     <div class="wrapper">
+                         <div class="SEARCHcontainer">
+                              <form role="search" method="get" action="listMedicAdmin.php" class="search-form form">
+                              <label>
+                                   <span class="screen-reader-text">Search for...</span>
+                                   <input type="search" class="search-field" placeholder="Trouver des médicaments..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>" name="search" title="" />
+                              </label>
+                              <input type="submit" class="search-submit button" value="&#xf002" />
+                         </form>
+                         </div>
+                         </div>
+</section>
+<br><br><br>
+<section>
+  <table>
+      <thead>
+          <tr class="thead">
+          <th scope="col">Id</th>
+          <th scope="col">Medicament</th>
+          <th scope="col">Photo</th>
+          <th scope="col">Lire</th>
+          <th scope="col">Modifier</th>
+          <th scope="col">Supp</th>
+          
+          </tr>
+      </thead>
+      <tbody>
+      <?php
+foreach ($tab as $medic) {
+?>
 
           <tr>
-                    <td><?= $medic['idmed']; ?></td>
-                    <td><?= $medic['medicament']; ?></td>
-                    
-                    <td>
-                    <img src="../../asset/frontoffice/images/<?php echo $medic['photo']; ?>" class="imgmed">
-                    </td>
-          <td>
-          <button class="bouton2" onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button>
+          <td data-label="Name"><?= $medic['idmed']; ?></td>
+          <td data-label="Title"><?= $medic['medicament']; ?></td>
+          <td data-label="Website"> <img src="../../asset/frontoffice/images/<?php echo $medic['photo']; ?>" class="imgmed"></td>
+          <td data-label="Role"><button  onclick="window.open('<?= $medic['lien']; ?>', '_blank')">Consulter</button></td>
+          <td data-label="Role">
+          <form method="POST" action="updateMedicAdmin.php">
+                      <button  type="submit" name="update" >Modifier</button>
+                      <input type="hidden" value="<?= $medic['idmed']; ?>" name="id">
+                 </form>
           </td>
-                    <td align="center">
-                         <form method="POST" action="updateMedicAdmin.php">
-                              <button class="bouton2" type="submit" name="update" >Modifier</button>
-                              <input type="hidden" value="<?= $medic['idmed']; ?>" name="id">
-                         </form>
-                    </td>
-                    <td>
-                    <button class="bouton2" onclick="window.location.href='deleteMedicAdmin.php?idmed=<?= $medic['idmed']; ?>'">Supprimer</button>
-
-                    </td>
-                         </tr>
-          <?php
-          }
-          ?>
-                              <tr>
-                              <td></td>
-                              <td><span id="erreurmedic"></span></td>
-                              <td><span id="erreurphoto"></span></td>
-                              <td><span id="erreurlien"></span></td>
-                              <td></td>
-                         </tr>
-                    </tbody>
-               </table></center>
-               <button type="button" class="bouton" onclick="location.href='addMedicAdmin.php';">Ajouter un médicament</button>
-               <br><br><br><br><br>
-               
-         </form>
-    </section>
-
-
-
-
-
-        <footer class="row tm-mt-small">
+          <td data-label="Role"> <button onclick="window.location.href='deleteMedicAdmin.php?idmed=<?= $medic['idmed']; ?>'">Supprimer</button></td>
+          
+          </tr>
+<?php
+}
+?>
+      </tbody>
+      </table>
+      <button type="button"  onclick="location.href='addMedicAdmin.php';">Ajouter un médicament</button>
+       <br><br><br><br><br>
+  </section>
+  <footer class="row tm-mt-small">
             <div class="col-12 font-weight-light">
                 <p class="d-inline-block tm-bg-black text-white py-2 px-4">
                     Copyright &copy; 2023/2024 Esprit école sup privée
@@ -177,5 +173,112 @@ $tab = $c->listMedic();
     <script src="../../asset/backoffice/js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
 </body>
-
 </html>
+
+<style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600;700&display=swap');
+  *{
+      font-family: 'Ubuntu', sans-serif;
+  
+  }
+  
+  .imgmed{
+      width: 100px;
+      height: 80px;
+    }
+  table {
+  /*   border: 1px solid #ccc; */
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+      font-family: 'Ubuntu', sans-serif;
+    font-size: 55px;
+    font-weight:700;
+    color:#00000090;
+    padding: 15px;
+  }
+  
+  table tr {
+    background-color: #ffffff90;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  .thead{
+    background-color: rgba(0, 0, 0, 0.5);;
+    color:#fff;
+  }
+  
+  table th,
+  table td {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  table th {
+    font-size: 20px;
+    letter-spacing: .1em;
+    text-transform: capitalize;
+  }
+  
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+    .thead{
+    background-color: rgb(67 56 202);
+    color:#fff;
+  }
+  
+    table caption {
+    font-size: 35px;
+    font-weight:700;
+    color:#00000090;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+</style>
+

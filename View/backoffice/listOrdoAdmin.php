@@ -3,6 +3,12 @@ include "../../Controller/HistoC.php";
 
 $histoC = new HistoC();
 $histoData = $histoC->listHisto();
+
+// Check if a search query is provided
+if (isset($_GET['search'])) {
+  $search = htmlspecialchars($_GET['search']);
+  $histoData = $histoC ->searchOrdo($search);
+} 
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +35,7 @@ $histoData = $histoC->listHisto();
     <link rel="stylesheet" href="../../asset/backoffice/css/tooplate.css">
     <link rel="stylesheet" href="../../asset/backoffice/css/tablemedback.css"> 
     <link rel="stylesheet" href="../../asset/frontoffice/css/ordoform.css"> 
+    <link rel="stylesheet" href="../../asset/frontoffice/css/search.css">  
 </head>
 
 <body class="bg03">
@@ -65,11 +72,11 @@ $histoData = $histoC->listHisto();
                                 </div>
                             </li>-->
                             <li class="nav-item">
-                                <a class="nav-link" href="products.html">Ordonnances</a>
+                                <a class="nav-link" href="#">Ordonnances</a>
                             </li>
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Médicaments</a>
+                                <a class="nav-link" href="listMedicAdmin.php">Médicaments</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -97,60 +104,64 @@ $histoData = $histoC->listHisto();
         </div>
                 </div>
             
-    
-                </section>
-                <section class="ordonnance">
-                <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
-                    
-    <?php
+                <br>
+    <section>
+     <div class="wrapper">
+                         <div class="SEARCHcontainer">
+                              <form role="search" method="get" action="listOrdoAdmin.php" class="search-form form">
+                              <label>
+                                   <span class="screen-reader-text">Search for...</span>
+                                   <input type="search" class="search-field" placeholder="Trouver une ordonnance..." value="<?php echo isset($_GET['search']) ? $_GET['search'] : ''; ?>" name="search" title="" />
+                              </label>
+                              <input type="submit" class="search-submit button" value="&#xf002" />
+                         </form>
+                         </div>
+                         </div>
+</section>
+                <br><br><br><br><br>
+                
+<section>
+  <?php
     foreach ($histoData as $idOrdo => $data) {
     ?>
         <form id="form">
-            <h4>#Id :<?= $idOrdo; ?></h4>
-            <center>
-                <table class="dataTable" id="medicationTable">
-                    <thead>
-                        <tr class="col1">
-                            <th>N°</th>
-                            <th>Nom du médicament</th>
-                            <th>Dosages</th>
-                            <th>Durée du traitement</th>
-                            <th>Remarques</th>
-                            <th>idpat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
+        <br><br><br><br><br>
+           <center> <h4>#Id :<?= $idOrdo; ?></h4></center>
+  <table>
+      <thead>
+          <tr class="thead">
+          <th scope="col">Num</th>
+          <th scope="col">Nom du médicament</th>
+          <th scope="col">Dosages</th>
+          <th scope="col">Durée du traitement</th>
+          <th scope="col">Remarques</th>
+          <th scope="col">Idpat</th>
+          
+          </tr>
+      </thead>
+      <tbody>
+       <?php
                         foreach ($data as $row) {
                         ?>
-                            <tr>
-                                <td><?= $row['numMedic']; ?></td>
-                                <td><?= $row['nommed']; ?></td>
-                                <td><?= $row['dosage']; ?></td>
-                                <td><?= $row['duree']; ?></td>
-                                <td><?= $row['rq']; ?></td>
-                                <td><?= $row['idpat']; ?></td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </center>
-            <br><br><br><br><br>
-        </form>
-    <?php
+          <tr>
+          <td data-label="Name"><?= $row['numMedic']; ?></td>
+          <td data-label="Title"><?= $row['nommed']; ?></td>
+          <td data-label="Website"> <?= $row['dosage']; ?></td>
+          <td data-label="Role"><?= $row['duree']; ?></td>
+          <td data-label="Website"> <?= $row['rq']; ?></td>
+          <td data-label="Role"><?= $row['idpat']; ?></td>
+          </tr>
+<?php
+}
+?>
+      </tbody>
+      </table>
+ <?php
     }
     ?>
-                </div>
-</section>
-
-     
-
-
-
-
-
+       <br><br><br><br><br>
+  </section>
+    
         <footer class="row tm-mt-small">
             <div class="col-12 font-weight-light">
                 <p class="d-inline-block tm-bg-black text-white py-2 px-4">
@@ -167,3 +178,113 @@ $histoData = $histoC->listHisto();
 </body>
 
 </html>
+
+
+
+<style>
+    
+  @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600;700&display=swap');
+  *{
+      font-family: 'Ubuntu', sans-serif;
+  
+  }
+  
+  .imgmed{
+      width: 100px;
+      height: 80px;
+    }
+  table {
+  /*   border: 1px solid #ccc; */
+    border-collapse: collapse;
+    margin: 0 auto;
+    padding: 0;
+    width: 80%;
+    table-layout: fixed;
+  }
+  
+  table caption {
+      font-family: 'Ubuntu', sans-serif;
+    font-size: 55px;
+    font-weight:700;
+    color:#00000090;
+    padding: 15px;
+  }
+  
+  table tr {
+    background-color: #ffffff90;
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  .thead{
+    background-color: rgba(0, 0, 0, 0.5);;
+    color:#fff;
+  }
+  
+  table th,
+  table td {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  table th {
+    font-size: 20px;
+    letter-spacing: .1em;
+    text-transform: capitalize;
+  }
+  
+  @media screen and (max-width: 600px) {
+    table {
+      border: 0;
+    }
+    .thead{
+    background-color: rgb(67 56 202);
+    color:#fff;
+  }
+  
+    table caption {
+    font-size: 35px;
+    font-weight:700;
+    color:#00000090;
+    }
+    
+    table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    table td::before {
+      /*
+      * aria-label has no advantage, it won't be read inside a table
+      content: attr(aria-label);
+      */
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    table td:last-child {
+      border-bottom: 0;
+    }
+  }
+</style>
+
