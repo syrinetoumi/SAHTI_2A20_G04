@@ -96,7 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
           }
           
           .ajout:hover {
-               background-color: #252525;
+               background-color: #b1fa07;
+               color: black;
           }
 
           #ajouter td[colspan="4"], #rend td[colspan="6"] {
@@ -175,21 +176,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
     <input type="hidden" name="idVehicule" value="<?= $v; ?>">
 
         <section id="rend">
-     <table width="80%" style="margin: 0 auto; border-collapse: collapse; border: 2px solid white; background-color: transparent;">
-       <tr class="tableheader">
-         <td colspan="6" align="center" style="border-bottom: 2px solid white;">
-           <b id="mod">Trajet</b>
-         </td>
-       </tr>
-       <tr class="tableheader">
-         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Etat</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Année d'expérience</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Routes préférées</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Préférence de véhicule</b></td>
-         <td align="center" width="16.67%" style="border-right: 2px solid white;"><b>Compétences spéciales</b></td>
-       </tr>
-       <tr style="border-top: 2px solid white;">
-         <td style="border-right: 2px solid white;">
+     <table >
+       
+       <tr>
+       <td><label for="etat" style="color:black;font-size:30px;">État:</label></td>         
+       <td >
            <b><div class="input-group mb-3">
              <select id="etat" name="etat">
                <option value="Tunis">Tunis</option>
@@ -220,13 +211,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitTrajet"])) {
              </select>
            </div></b>
          </td>
-         <td align="center" width="16.67%" style="border-right: 2px solid white;">
-           <input value="" id="annee_exp" name="annee_exp" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_annee"></div>
-         </td>
-         <td style="border-right: 2px solid white;"><b><input value="" id="routes_pre" name="routes_pre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_route"></div></b></td>
-         <td style="border-right: 2px solid white;"><b><input value="" id="pref_veh" name="pref_veh" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_preference"></div></b></td>
-         <td style="border-right: 2px solid white;"><b><input value="" id="comp_spe" name="comp_spe" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_competence"></div></b></td>
-       </tr>
+</tr>
+
+<tr>
+<div class="form-group">
+     <td><label for="annee_exp" style="color:black;font-size:30px;">Année d'expérience:</label></td>
+     <td >
+          <input value="" id="annee_exp" name="annee_exp" type="number" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_annee"></div>
+     </td>
+</div>
+</tr>
+
+<tr>
+<div class="form-group">
+          <td><label for="routes_pre" style="color:black;font-size:30px;">Routes Préférées:</label></td>
+         <td><b><input value="" id="routes_pre" name="routes_pre" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_route"></div></b></td>
+</div>
+     </tr>
+
+<tr>
+<div class="form-group">
+                            <td><label style="color:black;font-size:30px;" for="pref_veh">Préférence Véhicule:</label></td>
+         <td><b><input value="" id="pref_veh" name="pref_veh" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_preference"></div></b></td>
+</div>
+     </tr>
+
+<tr>
+<div class="form-group">
+                            <td><label style="color:black;font-size:30px;" for="comp_spe">Compétences Spéciales:</label></td>
+         <td><b><input value="" id="comp_spe" name="comp_spe" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_competence"></div></b></td>
+</div>  
+     </tr>
      </table>
    </section>
 <br><br>

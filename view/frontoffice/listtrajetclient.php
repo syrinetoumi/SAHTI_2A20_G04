@@ -4,13 +4,11 @@ include '../../Controller/trajetT.php';
 //include '../../Controller/vehiculeC.php';
 
 
-
 // Create an instance of the controller
 $trajetT = new TrajetT();
 
 if (isset($_POST['idVehicule'])) {
     $vehicule = $_POST['idVehicule'];
-    echo($vehicule);
 }
 // Get the list of trajectories
 $tab = $trajetT->listTrajetuser($vehicule);

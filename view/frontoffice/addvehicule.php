@@ -81,7 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitVehicule"])) {
           }
           
           .ajout:hover {
-               background-color: #252525;
+               background-color: #b1fa07;
+               color: black;
           }
 
           #ajouter td[colspan="4"], #rend td[colspan="6"] {
@@ -155,32 +156,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submitVehicule"])) {
     <input type="hidden" name="formType" value="vehicule">
     <section id="ajouter">
      <center>
-       <table width="80%" style="margin: 0 auto; border-collapse: collapse; border: 2px solid white; background-color: transparent;">
-         <tr class="tableheader">
-           <td colspan="4" align="center" style="border-bottom: 2px solid white;">
-             <b id="mod">Vehicule</b>
-           </td>
-         </tr>
-         <tr class="tableheader">
-           <td align="center" width="25%" style="border-right: 2px solid white;"><b>Marque</b></td>
-           <td align="center" width="25%" style="border-right: 2px solid white;"><b>Modèle</b></td>
-           <td align="center" width="25%" style="border-right: 2px solid white;"><b>Année</b></td>
-           <td align="center" width="25%" style="border-right: 2px solid white;"><b>Plaque matricule</b></td>
-         </tr>
-         <tr style="border-top: 2px solid white;">
-          <td align="center" width="25%" style="border-right: 2px solid white;">
+       <table>
+        
+         <tr>
+         <td><label style="color:black;font-size:30px;" for="marque">Marque :</label></td>
+         <td >
             <b><input value="" id="marque" name="marque" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_marque"></div><br></b>
           </td>
-          <td align="center" width="25%" style="border-right: 2px solid white;">
+</tr>
+
+<tr>
+         <td><label style="color:black;font-size:30px;" for="modele">Modèle :</label></td>
+         <td >
             <b><input value="" id="modele" name="modele" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_modele"></div></b>
           </td>
-          <td align="center" width="25%" style="border-right: 2px solid white;">
+</tr>
+
+          <tr>
+         <td><label style="color:black;font-size:30px;" for="annee">Année :</label></td>
+         <td >
             <b><input value="" id="annee" name="annee" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_anneeVehicule"></div></b>
           </td>
-          <td align="center" width="25%" style="border-right: 2px solid white;">
+</tr>
+         <td><label style="color:black;font-size:30px;" for="plnum">Plaque matricule :</label></td>
+         <td>
             <b><input value="" id="plnum" name="plnum" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7"><div id="vide_plaqueMatricule"></div></b>
           </td>
-         </tr>
+     
+         </tr> 
+          
+         
+         
+        
        </table>
      </center>
    </section>

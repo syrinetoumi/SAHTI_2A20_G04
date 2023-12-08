@@ -1,5 +1,7 @@
 <?php
 include '../../Controller/vehiculeC.php';
+//include '../../Controller/favorisF.php';
+
 
 $c = new VehiculeC();
 $tab = $c->listVehicule();
@@ -9,10 +11,20 @@ $tab = $c->listVehicule();
 
 // }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['idVehicule'])) {
+     $vehicule = $_POST['idVehicule'];
+     $c->addToFavorites($vehicule);
+     // Redirect to the same page after adding to favorites
+     header("Location: listvehiculeclient.php");
+     exit();
+ }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
      <title>Health Template - News Page</title>
@@ -36,8 +48,9 @@ $tab = $c->listVehicule();
      <link rel="stylesheet" href="../../asset/frontoffice/css/vehicule.css"> 
      <link rel="stylesheet" href="../../asset/frontoffice/css/nour.css">
 
-   
+
 </head>
+
 <body background="../../asset/frontoffice/img/slider3.jpg"  id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
     <!-- PRE LOADER -->
     <section class="preloader">
@@ -67,6 +80,7 @@ $tab = $c->listVehicule();
               <div class="collapse navbar-collapse">
                    <ul class="nav navbar-nav navbar-right">
                         <li><a href="#footer" class="smoothScroll">Contact</a></li>
+                        <li ><a href="listvehiculeclientfav.php">Favoris</a></li>
                         <li class="appointment-btn"><a href="suiviemedecin.html">Acceuil</a></li>
 
                    </ul>
@@ -79,79 +93,76 @@ $tab = $c->listVehicule();
         <center><table class="dataTable" id="medicationTable">
             <thead>
                 <tr class="col1">
-                    <th>id vehicule</th>
+                  <th>id vehicule</th>
                     <th>Marque</th>
                     <th>Modèle</th>
                     <th>Année</th>
                     <th>Plaque matricule</th>
                     <th>Trajet</th>
-                    <th>Modifier</th>
-                    <th>Supprimer</th>
-                </tr>
-            </thead>
+                    <th>chosit votre vehicule</th>
+             </tr>
+             </thead>
             <tbody>
-            <?php
+         <?php
     foreach ($tab as $vehicule) {
-    ?> 
+    ?>
 
-
-
-
-        <tr>
-            <td><?=  $vehicule['vehicle_id']; ?></td>
-            <td><?= $vehicule['marque'];  ?></td>
+        <tr style="border-top: 2px solid white;">
+            <td><?= $vehicule['vehicle_id']; ?></td>
+            <td><?= $vehicule['marque']; ?></td>
             <td><?= $vehicule['modele']; ?></td>
-            <td><?=  $vehicule['annee']; ?></td>
+            <td><?= $vehicule['annee']; ?></td>
             <td><?= $vehicule['plnum']; ?></td>
-            <td>
-            <form method="POST" action="listtrajet.php">
-            <input  id="up1" type="submit" name="list" value="list">
-            <input  type="hidden" value="<?= $vehicule['vehicle_id'];?>" name="idVehicule">
-            </form>
+            
 
+            <td >
+            <form method="POST" action="listtrajetclient.php">
+            <button style="width: 115.2px;color:green" class="bouton" id="up1"type="submit" name="list" value="list">
+            <input  type="hidden" value="<?= $vehicule['vehicle_id']; ?>" name="idVehicule">List
+          </form>
             </td>
-            <td align="center">
-                <form method="POST" action="uppdatevehicule.php">
-                    <input id="up1"type="submit" name="update" value="Update">
-                    <input type="hidden" value="<?= $vehicule['vehicle_id']; ?>" name="idVehicule">
-                </form>
+
+            <td>
+            <form method="POST" action="listvehiculeclient.php" >
+            <button style="width: 115.2px;color:green" class="bouton" id="up1"type="submit" name="id" value="ajouter">
+            <input  type="hidden" value="<?= $vehicule['vehicle_id']; ?>" name="idVehicule">+
+          </form>
             </td>
             
-            <td>
-           <form method="GET" action="deletevehicule.php">
-            <button   id="up1"type="submit" name="del" value="del" style="background-color:transparent;border-color:transparent;">
-                <a   href="deletevehicule.php?id=<?= $vehicule['vehicle_id']; ?>">Delete</a>                                                                                                                                                                             
-    </button>
-            </form>
-            </td>
+            
         </tr>
+
     <?php
     }
     ?>
-            </tbody>
+</tbody>
          </table></center>
             </tbody>
          </table></center>
-         <button type="button" class="bouton" onclick="location.href='addVehicule.php';">Ajouter véhicule</button>
-        <br><br><br><br><br>
-
+         <button type="button" class="bouton" onclick="location.href='feedback.html';">Feedback</button>
          </form>
     </section>
 
-     
 
-     <!-- SCRIPTS  <script src="../../asset/frontoffice/js/ordonnance.js"></script>-->
-     <script src="../../asset/frontoffice/js/jquery.js"></script>
-     <script src="../../asset/frontoffice/js/bootstrap.min.js"></script>
-     <script src="../../asset/frontoffice/js/jquery.sticky.js"></script>
-     <script src="../../asset/frontoffice/js/jquery.stellar.min.js"></script>
-     <script src="../../asset/frontoffice/js/jquery.magnific-popup.min.js"></script>
-     <script src="../../asset/frontoffice/js/magnific-popup-options.js"></script>
-     <script src="../../asset/frontoffice/js/wow.min.js"></script>
-     <script src="../../asset/frontoffice/js/smoothscroll.js"></script>
-     <script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
-     <script src="../../asset/frontoffice/js/custom.js"></script>
-     <script src="../../asset/frontoffice/js/vehicule.js"></script>
 
+</div>
+</div>
+</div>
 </body>
+
+<br><br><br><br>
+<br><br><br>
+<!-- FOOTER -->
+
+<!-- SCRIPTS -->
+<script src="../../asset/frontoffice/js/jquery.js"></script>
+<script src="../../asset/controllerjs/bootstrap.min.js"></script>
+<script src="../../asset/frontoffice/js/jquery.sticky.js"></script>
+<script src="../../asset/frontoffice/js/jquery.stellar.min.js"></script>
+<script src="../../asset/frontoffice/js/jquery.sticky.js"></script>
+<script src="../../asset/frontoffice/js/smoothscroll.js"></script>
+<script src="../../asset/frontoffice/js/owl.carousel.min.js"></script>
+<script src="../../asset/frontoffice/js/custom.js"></script>
+<script src="../../asset/frontoffice/js/vehicule.js"></script>
+
 </html>

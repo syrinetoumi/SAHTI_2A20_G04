@@ -18,7 +18,7 @@ class VehiculeC
 
     public function listVehiculeuser()
     {
-        $sql = "SELECT * FROM vehicule where user = 2";
+        $sql = "SELECT * FROM vehicule where user = 0";
         $db = config::getConnexion();
         try {
             $liste = $db->query($sql);
@@ -133,6 +133,81 @@ function ajouter($vehicule)
             die('Error: ' . $e->getMessage());
         }
     }
-}
 
+
+    public function listvehiculeclient($id)
+    {
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare("SELECT * FROM vehicule where vehicle_id = :idVehicule");
+            $query->bindParam(':idVehicule', $id);  // Bind the parameter
+            $query->execute();
+            return $query->fetchAll();
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
+
+    public function addToFavorites($id)
+    {
+        $db = config::getConnexion();
+    
+        try {
+            $db->beginTransaction();
+    
+            // Check if the vehicle_id exists in vehicule table
+            // You may want to enhance this check based on your application logic
+            $checkQuery = $db->prepare("SELECT COUNT(*) FROM vehicule WHERE vehicle_id = :id");
+            $checkQuery->execute(['id' => $id]);
+            $count = $checkQuery->fetchColumn();
+    
+            if ($count > 0) {
+                // Vehicle exists, proceed with the insertion
+                $insertQuery = $db->prepare("INSERT INTO favoris (vehicule_id,user_id) VALUES (:id,1)");
+                $insertQuery->execute(['id' => $id]);
+    
+                $db->commit();
+    
+                // Return a success message
+                header('Location: listvehiculeclient.php');
+                                exit();
+            } else {
+                // Vehicle does not exist, rollback the transaction
+                $db->rollBack();
+                
+                echo json_encode(['success' => false, 'message' => 'Error adding vehicle to favorites. Vehicle not found.']);
+                exit();
+            }
+        } catch (Exception $e) {
+            // Return an error message if any exception occurs
+            $db->rollBack();
+            echo json_encode(['success' => false, 'message' => 'Error adding vehicle to favorites. ' . $e->getMessage()]);
+            exit();
+        }
+    }
+    
+
+
+    public function listFav()
+    {
+        $sql = "SELECT v.* FROM vehicule v JOIN favoris f ON v.vehicle_id = f.vehicule_id where user_id=1";
+        $db = config::getConnexion();
+
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+
+            $favorites = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            return $favorites;
+        } catch (PDOException $e) {
+            echo 'Error: ' . $e->getMessage();
+            return array(); // Return an empty array in case of an error
+        }
+    }
+    
+
+
+
+}
 ?>
