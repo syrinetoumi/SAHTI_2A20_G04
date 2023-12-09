@@ -3,26 +3,13 @@
 <head>
 
      <title>E-SAHTI</title>
-<!--
 
-Template 2098 Health
-
-http://www.tooplate.com/view/2098-health
-
--->
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
      <meta name="description" content="">
      <meta name="keywords" content="">
      <meta name="author" content="Tooplate">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-
-     <!-- MAIN CSS -->
-
-
-
-
      <link rel="stylesheet" href="../../asset/frontoffice/css/bootstrap.min.css">
      <link rel="stylesheet" href="../../asset/frontoffice/css/font-awesome.min.css">
      <link rel="stylesheet" href="../../asset/frontoffice/css/animate.css">
@@ -30,10 +17,12 @@ http://www.tooplate.com/view/2098-health
      <link rel="stylesheet" href="../../asset/frontoffice/css/owl.theme.default.min.css">
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="../../asset/frontoffice/css/tooplate-style.css">
+     <link rel="stylesheet" href="../../asset/frontoffice/css/toggle.css">
+
 
 
 </head>
-<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50" class="light">
 
      <!-- PRE LOADER -->
      <section class="preloader">
@@ -88,14 +77,24 @@ http://www.tooplate.com/view/2098-health
                          <li><a href="#team" class="smoothScroll">Nos services</a></li>
                          <li><a href="#news" class="smoothScroll">Nos magazines</a></li>
                          <li><a href="#google-map" class="smoothScroll">Contact</a></li>
-                         <li class="appointment-btn"><a href="../../View/frontoffice/seconnecter.html">se connecter</a></li>
-                         <li class="appointment-btn"><a href="../frontoffice/inscription.php">s'inscrire</a></li>
+                         <li class="appointment-btn"><a href="../../View/frontoffice/seconnecter.php">se connecter</a></li>
+                         <li class="appointment-btn"><a href="../../View/frontoffice/inscription.php">s'inscrire</a></li>
 
                     </ul>
                </div>
 
           </div>
      </section>
+     <section id="togg">
+          <div class="theme-container">
+           <div class="dark-btn">
+             <i class="fa fa-moon-o" style="font-size:50px; color: #fdd522;"></i>
+           </div>
+           <div class="light-btn ">
+             <i class="fa fa-sun-o" style="font-size:50px; color: #ff6d05;"></i>
+           </div>
+         </div>
+      </section>
 
 
      <!-- HOME -->
@@ -485,6 +484,46 @@ http://www.tooplate.com/view/2098-health
                </div>
           </div>
      </footer>
+     <script>
+         const main = document.querySelector("#togg");
+const body = document.querySelector("#top");
+const themeContainer = document.querySelector(".theme-container");
+const light = document.querySelector(".light-btn");
+const dark = document.querySelector(".dark-btn");
+const accText = document.querySelector("#acc1"); 
+let darkMode = false;
+dark.addEventListener("click", () => {
+  darkMode = true;
+  if (darkMode) {
+    body.classList.add("dark-mode");
+    main.style.backgroundColor = "#333";
+    themeContainer.style.borderColor = "#fefefe";
+    dark.innerHTML = `<i class="fa fa-moon-o" style="font-size:50px; color: #fdd522;"></i>`;
+    light.innerHTML = `<div class="light-active"></div>`;
+    accText.style.color = "#fff"; 
+  }
+});
+         
+light.addEventListener("click", () => {
+  darkMode = false;
+  if (!darkMode) {
+    body.classList.remove("dark-mode");
+    main.style.backgroundColor = "#fefefe";
+    themeContainer.style.borderColor = "#333";
+    light.innerHTML = `<i class="fa fa-sun-o" style="font-size:50px; color: #ff6d05;"></i>`;
+    dark.innerHTML = `<div class="dark-active"></div>`;
+    accText.style.color = "#000"; 
+  }
+});
+window.addEventListener("load", () => {
+  body.classList.remove("dark-mode");
+  main.style.backgroundColor = "#fefefe";
+  themeContainer.style.borderColor = "#333";
+  light.innerHTML = `<i class="fa fa-sun-o" style="font-size:50px; color: #ff6d05;"></i>`;
+  dark.innerHTML = `<div class="dark-active"></div>`;
+});
+         
+         </script>
 
      <!-- SCRIPTS -->
      <script src="../../asset/frontoffice/js/jquery.js"></script>

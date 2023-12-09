@@ -1,48 +1,27 @@
-
 <?php
 session_start();
 require_once '../../Controller/userC.php';
+require_once '../../Controller/Router.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $role = $_POST["role_u"];
     $email = $_POST["email_u"];
     $motdepasse = $_POST["mdp_u"];
-    
-    $userC = new UserC();
+
+    $userC = new userC();
     $user = $userC->showUserByEmail($email);
 
     if ($user) {
-        if ($user->getmdp_u() === $motdepasse) {
-            if ($role == $user->getrole_u()) {
-                $_SESSION['user_id'] = $user->getid_u();
-                $_SESSION['user_role'] = $user->getrole_u();
-                $_SESSION['user_email'] = $user->getemail_u();
+        if (($motdepasse == $user->getmdp_u())) {
+            $_SESSION['user_id'] = $user->getid_u();
+            $_SESSION['user_role'] = $user->getrole_u();
+            $_SESSION['user_email'] = $user->getemail_u();
 
-                switch ($role) {
-                    case "admin":
-                        header("Location: admin.php");
-                        break;
-                    case "medecin":
-                        header("Location: med.html");
-                        break;
-                    case "chauffeur":
-                        header("Location: chauffeur.php");
-                        break;
-                    case "coach":
-                        header("Location: coach.php");
-                        break;
-                    default:
-                        // Redirection par défaut
-                        break;
-                }
-                exit();
-            } else {
-                echo "Incorrect role for the user.";
-            }
+            Router::redirect($user->getrole_u());
         } else {
-            echo "Password is incorrect.";
+            echo "Le mot de passe est incorrect.";
         }
     } else {
-        echo "Email not found.";
+        echo "E-mail non trouvé.";
     }
 }
 ?>
@@ -65,12 +44,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <!-- https://fonts.google.com/specimen/Open+Sans -->
-    <link rel="stylesheet" href="../../asset/bakoffice/css/fontawesome.min.css">
-
+    <link rel="stylesheet" href="../../asset/backoffice/css/fontawesome.min.css">
     <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="../../asset/bakoffice/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../asset/backoffice/css/bootstrap.min.css">
     <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="../../asset/bakoffice/css/tooplate.css">
+    <link rel="stylesheet" href="../../asset/backoffice/css/tooplate.css">  
 </head>
 
 <body class="bg03">
@@ -88,14 +66,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <form action="index.html" method="post" class="tm-login-form" id="login">
+                            <form method="post" class="tm-login-form" id="login">
                                 <div class="input-group">
-                                    <label for="username" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Nom d'utilisateur</label>
-                                    <input name="username" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" value="admin" required>
+                                    <label for="email_u" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Email</label>
+                                    <input name="email_u" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username" placeholder="email admin" required>
                                 </div>
                                 <div class="input-group mt-3">
-                                    <label for="password" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Mot de passe</label>
-                                    <input name="password" type="password" class="form-control validate" id="password" value="1234" required>
+                                    <label for="mdp_u" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Mot de passe</label>
+                                    <input name="mdp_u" type="password" class="form-control validate" id="mdp_u" placeholder="...." required>
                                 </div>
                                 <div class="input-group mt-3">
                                     <button type="submit" class="btn btn-primary d-inline-block mx-auto">se connecter</button>
@@ -119,5 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </footer>
     </div>
 </body>
+<script src="../../asset/frontoffice/js/controle.js"></script>
 
 </html>

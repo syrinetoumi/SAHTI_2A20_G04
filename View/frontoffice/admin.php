@@ -1,3 +1,68 @@
+<?php
+include '../../Controller/userC.php';
+include '../../model/user.php';
+
+$error = "";
+
+// create user
+$user = null;
+// create an instance of the controller
+$userC = new userC();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (
+        isset($_POST["nom_u"]) &&
+        isset($_POST["prenom_u"]) &&
+        isset($_POST["cin_u"]) &&
+        isset($_POST["tel_u"]) &&
+        isset($_POST["email_u"]) && // Update to match the input name in the form
+        isset($_POST["role_u"]) &&
+        isset($_POST["mdp_u"])
+    ) {
+        if (
+            !empty($_POST['nom_u']) &&
+            !empty($_POST["prenom_u"]) &&
+            !empty($_POST["cin_u"]) &&
+            !empty($_POST["tel_u"]) &&
+            !empty($_POST["email_u"]) && // Update to match the input name in the form
+            !empty($_POST["role_u"]) &&
+            !empty($_POST["mdp_u"])
+        ) {
+            // Update the following line to use the correct properties of the user object
+            $user = new user(
+                null,
+                $_POST['nom_u'],
+                $_POST['prenom_u'],
+                $_POST['cin_u'],
+                $_POST['tel_u'],
+                $_POST['email_u'], // Update to match the input name in the form
+                $_POST['role_u'],
+                $_POST['mdp_u']
+            );
+
+            $userC->updateuser($user, $_POST['id_u']);
+
+            // Add these lines for debugging
+            echo "Update request processed.<br>";
+            echo "ID: " . $_POST['id_u'] . "<br>";
+            echo "Nom: " . $_POST['nom_u'] . "<br>";
+            echo "Prenom: " . $_POST['prenom_u'] . "<br>";
+            echo "CIN: " . $_POST['cin_u'] . "<br>";
+            echo "EMAIL: " . $_POST['email_u'] . "<br>"; 
+            echo "TEL: " . $_POST['tel_u'] . "<br>";
+            echo "ROLE: " . $_POST['role_u'] . "<br>";
+            echo "MOT DE PASSE: " . $_POST['mdp_u'] . "<br>";
+
+            // ...
+
+            header('Location: listuser.php');
+            exit;
+        } else {
+            $error = "Missing information";
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +84,8 @@
      <link rel="stylesheet" href="../../asset/frontoffice/css/owl.theme.default.min.css">
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="../../asset/frontoffice/css/tooplate-style.css">
+
+
 
 
 </head>
@@ -54,162 +121,34 @@
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                          <li><a href="index.html">Accueil</a></li>
-                         <li><a href="#rend" class="smoothScroll">Liste des medecins</a></li>
-                         <li><a href="#cordonnee" class="smoothScroll">Liste d'utilisateurs</a></li>
-                         <li><a href="#profupdate" class="smoothScroll">Modier mon profil</a></li>
+                         <li><a href="suiviecoach.php" class="smoothScroll">Liste des utilisateurs</a></li>
+                         <li><a href="rendezvoussportif.php" class="smoothScroll"></a></li>
+                         <li><a href="profiladmin.php" class="smoothScroll">Profil</a></li>
 
-                        <!-- <li class="appointment-btn"><a href="C:\Users\1cyri\OneDrive\Bureau\projet\View\upmed.html">Modifier mon profil  </a></li>-->
-                         <li class="appointment-btn"><a href="../../asset/frontoffice/view/inscription.html">se deconnecter</a></li>
+                         <li class="appointment-btn"><a href="../../View/frontoffice/deconnecter.php">se deconnecter</a></li>
 
                     </ul>
                </div>
 
           </div>
      </section>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
 <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <section id="cordonnee">
-     <center>
-     <table width="90%" height="182">
-          <tr>
-               <td colspan="7" align="center">
-               <p align="center"><b>Mes informations </b></td>
-          </tr>
-          <tr>
-               <td align="center" width="15%"><b>Nom</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Prenom</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Email</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Telephone</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Cin</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Mot de passe</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-          </tr>
-          <tr>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-          </tr>
-     </table></center>
-    </section>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
 
-
-
-
-    <section id="rend">
-     <center>
-          <table width="90%" height="182">
-               <tr>
-                    <td colspan="7" align="center">
-                    <p align="center"><b>Liste des medecins </b></td>
-               </tr>
-               <tr>
-                    <td align="center" width="15%"><b>Nom_med</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Prenom_med</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Telephone_med</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Specialite</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-
-               </tr>
-               <tr>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-               </tr>
-          </table></center>
-    </section>
-
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+    
   
-    <section id="rend">
-     <center>
-          <table width="90%" height="182">
-               <tr>
-                    <td colspan="7" align="center">
-                    <p align="center"><b>Liste des patients </b></td>
-               </tr>
-               <tr>
-                    <td align="center" width="15%"><b>Nom_patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Prenom_patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Telephone_patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Maladie</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
 
-               </tr>
-               <tr>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-               </tr>
-          </table></center>
-    </section>
 
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <section id="rend">
-     <center>
-          <table width="90%" height="182">
-               <tr>
-                    <td colspan="7" align="center">
-                    <p align="center"><b>Liste des coach </b></td>
-               </tr>
-               <tr>
-                    <td align="center" width="15%"><b>Nom_coach</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Prenom_coach</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Telephone_coach</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Type de sport</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
 
-               </tr>
-               <tr>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-               </tr>
-          </table></center>
-    </section>
-
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <section id="rend">
-     <center>
-          <table width="90%" height="182">
-               <tr>
-                    <td colspan="7" align="center">
-                    <p align="center"><b>Liste des chauffeur </b></td>
-               </tr>
-               <tr>
-                    <td align="center" width="15%"><b>Nom_chauffeur</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Prenom_chauffeur</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Telephone_chauffeur</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Zone de travaille</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-
-               </tr>
-               <tr>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-               </tr>
-          </table></center>
-    </section>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
 
 <section id="profupdate">
 
@@ -233,7 +172,7 @@
                                                        <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Nom</label><br>
                                              </td>
                                              <td>
-                                         <input  id="nom" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+<input id="nom" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                                           </div>
                                           <br>
                                              </td>
@@ -251,6 +190,7 @@
                                              <br>
                                              </td>
                                         </tr>
+                                  
                                    <tr>
                                         <td>
                                              <div class="input-group mb-3">

@@ -33,26 +33,29 @@ class userC
 
     public function adduser($user)
     {
-        $sql = "INSERT INTO user  
-                VALUES (:id, :nom_u, :prenom_u, :tel_u, :cin_u, :email_u, :mdp_u, :role_u)";
+        $sql = "INSERT INTO user VALUES (NULL, :nom_u, :prenom_u, :cin_u, :tel_u, :email_u, :mdp_u, :role_u, NULL, NULL)";
+    
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
-            $query->execute([
-                'id' => $user->getid_u(),
-                'nom_u' => $user->getnom_u(),
-                'prenom_u' => $user->getprenom_u(),
-                'tel_u' => $user->gettel_u(),
-                'cin_u' => $user->getcin_u(),
-                'email_u' => $user->getemail_u(),
-                'mdp_u' => $user->getmdp_u(),
-                'role_u' => $user->getrole_u(),
-            ]);
+            $query->bindParam(':nom_u', $user->getnom_u());
+            $query->bindParam(':prenom_u', $user->getprenom_u());
+            $query->bindParam(':cin_u', $user->getcin_u());
+            $query->bindParam(':tel_u', $user->gettel_u());
+            $query->bindParam(':email_u', $user->getemail_u());
+            $query->bindParam(':mdp_u', $user->getmdp_u());
+            $query->bindParam(':role_u', $user->getrole_u());
+    
+            if ($query->execute()) {
+                echo "Utilisateur ajouté avec succès.";
+            } else {
+                echo "Erreur lors de l'ajout de l'utilisateur.";
+            }
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
         }
     }
-
+    
     function showUserByEmail($email)
     {
         $sql = "SELECT * FROM user WHERE email_u = :email";
@@ -82,6 +85,19 @@ class userC
             die('Error: ' . $e->getMessage());
         }
     }
+    function showUserById($id)
+    {
+        $sql = "SELECT * FROM user WHERE id_u = $id";
+        $db = config::getConnexion();
+        try {
+            $query = $db->prepare($sql);
+            $query->execute();
+            $user = $query->fetch();
+            return $user;
+        } catch (Exception $e) {
+            die('Error: ' . $e->getMessage());
+        }
+    }
 
     public function updateuser($user, $id)
     {
@@ -96,11 +112,11 @@ class userC
                 email_u = :email_u,
                 role_u = :role_u,
                 mdp_u = :mdp_u
-            WHERE id_u = :id'
+            WHERE id_u = :id_u'
             );
 
             $query->execute([
-                'id' => $id,
+                'id_u' => $id,
                 'nom_u' => $user->getnom_u(),
                 'prenom_u' => $user->getprenom_u(),
                 'tel_u' => $user->gettel_u(),
@@ -115,5 +131,55 @@ class userC
             echo $e->getMessage();
         }
     }
+    public function searchUser($search) {
+    $search = "%{$search}%";
+    $sql = "SELECT * FROM user WHERE nom_u LIKE :search";
+
+    $db = config::getConnexion();
+
+    try {
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':search', $search, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $medicArray = array();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $medicArray[] = $row;
+        }
+
+        return $medicArray;
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        return array(); // Return an empty array in case of an error
+    }
+}
+
+public function getRoleStatistics()
+{
+    $sql = "SELECT role_u, COUNT(*) as count FROM user GROUP BY role_u";
+    $db = config::getConnexion();
+
+    try {
+        $result = $db->query($sql);
+        $totalUsers = $result->rowCount();
+        $percentageData = array();
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $role = $row['role_u'];
+            $count = $row['count'];
+            $percentage = ($count / $totalUsers) * 100;
+
+            $percentageData[$role] = $percentage;
+        }
+
+        return $percentageData;
+    } catch (PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        return array(); // Return an empty array in case of an error
+    }
+}
+
+//
 }
 ?>

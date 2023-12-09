@@ -53,9 +53,9 @@ function verifierChamps(event) {
     }
 
     // Valider le choix du rôle
-    var role = document.querySelector('input[name="x"]:checked');
+    /*var role = document.querySelector('input[name="x"]:checked');
     if (!role) {
         document.getElementById("erreurRole").innerHTML = "Veuillez choisir un rôle.";
         event.preventDefault();
-    }
+    }*/
 }

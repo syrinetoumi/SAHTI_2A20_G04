@@ -86,6 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
      <link rel="stylesheet" href="../../asset/frontoffice/css/tooplate-style.css">
 
 
+
+
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
@@ -119,84 +121,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
                          <li><a href="index.html">Accueil</a></li>
-                         <li><a href="#rend" class="smoothScroll">Mes rendez-vous</a></li>
-                         <li><a href="#cordonnee" class="smoothScroll">Mes cordonnée</a></li>
-                         <li><a href="#profupdate" class="smoothScroll">Modier mon profil</a></li>
+                         <li><a href="suiviecoach.php" class="smoothScroll">Suivie</a></li>
+                         <li><a href="rendezvoussportif.php" class="smoothScroll">Rendez_vous</a></li>
+                         <li><a href="profilcoach.php" class="smoothScroll">Profil</a></li>
 
-                         <li class="appointment-btn"><a href="../../asset/frontoffice/view/deconnecter.php">se deconnecter</a></li>
+                         <li class="appointment-btn"><a href="../../View/frontoffice/deconnecter.php">se deconnecter</a></li>
 
                     </ul>
                </div>
 
           </div>
      </section>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
 <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <section id="cordonnee">
-     <center>
-     <table width="90%" height="182">
-          <tr>
-               <td colspan="7" align="center">
-               <p align="center"><b>Mes informations </b></td>
-          </tr>
-          <tr>
-               <td align="center" width="15%"><b>Nom</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Prenom</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Email</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Telephone</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Cin</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Zone</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-               <td align="center" width="15%"><b>Mot de passe</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-          </tr>
-          <tr>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-               <td width="15%">&nbsp;</td>
-          </tr>
-     </table></center>
-    </section>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
+<br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
 
+    
+  
 
-
-
-    <section id="rend">
-     <center>
-          <table width="90%" height="182">
-               <tr>
-                    <td colspan="7" align="center">
-                    <p align="center"><b>Mon plant </b></td>
-               </tr>
-               <tr>
-                    <td align="center" width="15%"><b>Nom_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Prenom_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>Telephone_Patient</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>point de depart</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |</td>
-                    <td align="center" width="15%"><b>point d'arriver</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
-
-               </tr>
-               <tr>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-                    <td width="15%">&nbsp;</td>
-               </tr>
-          </table></center>
-    </section>
-
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
-    <br><br<br<br><br><br<br<br><br><br<br<br><br><br<br<br>
 
 
 
@@ -222,7 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                        <label for="expire_date" class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Nom</label><br>
                                              </td>
                                              <td>
-                                         <input  id="nom" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
+<input id="nom" name="name" type="text" class="form-control validate col-xl-9 col-lg-8 col-md-8 col-sm-7">
                                           </div>
                                           <br>
                                              </td>

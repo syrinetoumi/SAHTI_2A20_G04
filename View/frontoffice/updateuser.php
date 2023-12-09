@@ -8,7 +8,7 @@ $error = "";
 $user = null;
 // create an instance of the controller
 $userC = new userC();
-
+/*
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (
         isset($_POST["nom_u"]) &&
@@ -42,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $userC->updateuser($user, $_POST['id_u']);
 
-            // Add these lines for debugging
             echo "Update request processed.<br>";
             echo "ID: " . $_POST['id_u'] . "<br>";
             echo "Nom: " . $_POST['nom_u'] . "<br>";
@@ -61,6 +60,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $error = "Missing information";
         }
     }
+}*/
+
+
+if ( isset($_POST["nom_u"]) &&
+isset($_POST["prenom_u"]) &&
+isset($_POST["cin_u"]) &&
+isset($_POST["tel_u"]) &&
+isset($_POST["email_u"]) && // Update to match the input name in the form
+isset($_POST["role_u"]) &&
+isset($_POST["mdp_u"])) {
+    if (!empty($_POST['nom_u']) &&
+    !empty($_POST["prenom_u"]) &&
+    !empty($_POST["cin_u"]) &&
+    !empty($_POST["tel_u"]) &&
+    !empty($_POST["email_u"]) && // Update to match the input name in the form
+    !empty($_POST["role_u"]) &&
+    !empty($_POST["mdp_u"]))
+    {
+        foreach ($_POST as $key => $value) {
+            echo "Key: $key, Value: $value<br>";
+        }
+        $user = new user(
+            null,
+            $_POST['nom_u'],
+            $_POST['prenom_u'],
+            $_POST['cin_u'],
+            $_POST['tel_u'],
+            $_POST['email_u'], // Update to match the input name in the form
+            $_POST['role_u'],
+            $_POST['mdp_u']
+        );
+        var_dump($user);
+        
+        $userC->updateuser($user, $_POST['id_u']);
+        header('Location: listuser.php');
+        exit();
+    } else
+        $error = "Missing information";
 }
 ?>
 
@@ -87,7 +124,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php
     if (isset($_POST['id_u'])) {
-        $user = $userC->showUserByEmail($_POST['email_u']);
+        $user = $userC->showUserById($_POST['id_u']);
         ?>
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
