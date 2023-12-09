@@ -11,6 +11,26 @@ if (!class_exists('user')) {
         private $mdp_u;
         private $role_u;
 
+        public static function getUserByEmail($email)
+{
+    $host = 'http://localhost/';
+    $dbname = 'e-sahti';
+    $username = 'root';
+    $password = '';
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $pdo->prepare("SELECT * FROM user WHERE email_u = :email");
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_OBJ);
+        $pdo = null;
+        return $user;
+    } catch (PDOException $e) {
+        echo "Erreur de connexion à la base de données: " . $e->getMessage();
+        return null;
+    }
+}
         public function getid_u()
         {
             return $this->id_u;
@@ -91,6 +111,7 @@ if (!class_exists('user')) {
             $this->role_u = $role_u;
         }
     }
+    
 }
 
 ?>

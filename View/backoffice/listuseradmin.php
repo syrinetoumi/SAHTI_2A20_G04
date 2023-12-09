@@ -43,7 +43,7 @@ if (isset($_GET['search'])) {
         <div class="row">
             <div class="col-12">
                 <nav class="navbar navbar-expand-xl navbar-light bg-light">
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="../../View/backoffice/admin.php">
                         <div class="logo">
                             <img src="../../asset/backoffice/img/logo.png" class="imglogo" alt="">
                        </div>
@@ -56,7 +56,7 @@ if (isset($_GET['search'])) {
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="index.html">Dashboard
+                                <a class="nav-link" href="../../View/backoffice/admin.php">Dashboard
                                     <span class="sr-only">(current)</span>
                                 </a>
                             </li>
@@ -65,7 +65,7 @@ if (isset($_GET['search'])) {
                             </li>
 
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Admin</a>
+                                <a class="nav-link" href="../../View/backoffice/admin.php">Admin</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -73,9 +73,8 @@ if (isset($_GET['search'])) {
                                     Settings
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Profile</a>
-                                    <a class="dropdown-item" href="#">Billing</a>
-                                    <a class="dropdown-item" href="#">Customize</a>
+                                    <a class="dropdown-item" href="../../View/backoffice/profileAdmin.php">Profile</a>
+                                
                                 </div>
                             </li>
                         </ul>
@@ -83,7 +82,7 @@ if (isset($_GET['search'])) {
                             <li class="nav-item">
                                 <a class="nav-link d-flex" href="login.html">
                                     <div class="hov"> <i class="far fa-user mr-2 tm-logout-icon" id="c1"></i>
-                                     <span id="log">Déconnecter</span></div>
+                                     <span href="../../View/backoffice/login.php">Déconnecter</span></div>
                                  </a>
                             </li>
                         </ul>

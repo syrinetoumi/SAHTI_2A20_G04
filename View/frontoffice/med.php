@@ -5,8 +5,9 @@ require_once '../../Controller/userC.php';
 
 $userC = new userC();
 
+// Vérifier si l'utilisateur est connecté et si le jeton est valide
 if (!isset($_SESSION['token_u']) || !$userC->isTokenValid($_SESSION['email_u'], $_SESSION['token_u'])) {
-    // Redirect to login or show an error
+    // Rediriger vers la page de connexion
     header("Location: seconnecter.php");
     exit();
 }

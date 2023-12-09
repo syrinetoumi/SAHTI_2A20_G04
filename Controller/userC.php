@@ -16,6 +16,17 @@ class userC
             die('Error:' . $e->getMessage());
         }
     }
+    public function isTokenValid($email, $token) {
+        // Vérifiez si l'email et le token correspondent dans votre base de données
+        // Utilisez la méthode statique de la classe user
+        $user = user::getUserByEmail($email);
+    
+        if ($user && $user->token === $token) {
+            return true;
+        }
+    
+        return false;
+    }
 
     public function deleteuser($id)
     {
@@ -85,12 +96,13 @@ class userC
             die('Error: ' . $e->getMessage());
         }
     }
-    function showUserById($id)
+    public function showUserById($id_u)
     {
-        $sql = "SELECT * FROM user WHERE id_u = $id";
+        $sql = "SELECT * FROM user WHERE id_u = :id";
         $db = config::getConnexion();
         try {
             $query = $db->prepare($sql);
+            $query->bindParam(':id', $id_u);
             $query->execute();
             $user = $query->fetch();
             return $user;
@@ -98,6 +110,8 @@ class userC
             die('Error: ' . $e->getMessage());
         }
     }
+    
+    
 
     public function updateuser($user, $id)
     {

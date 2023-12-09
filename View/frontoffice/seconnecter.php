@@ -11,7 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $userC->showUserByEmail($email);
 
     if ($user) {
-        if (($motdepasse == $user->getmdp_u())) {
+        $_SESSION["user"] = [
+            "id_u" => $user->getid_u(),
+            "nom" => $user->getnom_u(),
+            "email_u" => $user->getemail_u(),
+            "role" => $user->getrole_u()
+        ];
+
+        if ($motdepasse == $user->getmdp_u()) {
             $_SESSION['user_id'] = $user->getid_u();
             $_SESSION['user_role'] = $user->getrole_u();
             $_SESSION['user_email'] = $user->getemail_u();

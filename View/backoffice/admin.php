@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,6 +28,7 @@
 </head>
 
 <body id="reportsPage">
+    
     <div class="" id="home">
         <div class="container">
             <div class="row">
@@ -50,18 +54,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                        Reports
-                                    </a>
+                                   
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="#">Daily Report</a>
                                         <a class="dropdown-item" href="#">Weekly Report</a>
                                         <a class="dropdown-item" href="#">Yearly Report</a>
                                     </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="products.html">Products</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -70,12 +68,11 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                        Settings
+                                        parametre
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Profile</a>
-                                        <a class="dropdown-item" href="#">Billing</a>
-                                        <a class="dropdown-item" href="#">Customize</a>
+                                        <a class="dropdown-item" href="../../View/backoffice/profileAdmin.php">Profile</a>
+                                     
                                     </div>
                                 </li>
                             </ul>
@@ -83,7 +80,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link d-flex" href="login.html">
                                        <div class="hov"> <i class="far fa-user mr-2 tm-logout-icon" id="c1"></i>
-                                        <span id="log"><a href="login.php">Deconnecter</a></span></div>
+                                        <span id="log"><a href="../../View/backoffice/login.php">Deconnecter</a></span></div>
                                     </a>
                                 </li>
                             </ul>
@@ -92,235 +89,68 @@
                 </div>
             </div>
             <!-- row -->
-            <div class="row tm-content-row tm-mt-big">
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Latest Hits</h2>
-                        <canvas id="lineChart"></canvas>
-                    </div>
-                </div>
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Performance</h2>
-                        <canvas id="barChart"></canvas>
-                    </div>
-                </div>
+           
+                
                 <div class="tm-col tm-col-small">
-                    <div class="bg-white tm-block h-100">
-                        <canvas id="pieChart" class="chartjs-render-monitor"></canvas>
-                    </div>
-                </div>
+                <?php
+include '../../Controller/userC.php';
+include '../../model/user.php';
 
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <div class="row">
-                            <div class="col-8">
-                                <h2 class="tm-block-title d-inline-block">Top Product List</h2>
+$userController = new userC();
 
-                            </div>
-                            <div class="col-4 text-right">
-                                <a href="products.html" class="tm-link-black">View All</a>
-                            </div>
-                        </div>
-                        <ol class="tm-list-group tm-list-group-alternate-color tm-list-group-pad-big">
-                            <li class="tm-list-group-item">
-                                Donec eget libero
-                            </li>
-                            <li class="tm-list-group-item">
-                                Nunc luctus suscipit elementum
-                            </li>
-                            <li class="tm-list-group-item">
-                                Maecenas eu justo maximus
-                            </li>
-                            <li class="tm-list-group-item">
-                                Pellentesque auctor urna nunc
-                            </li>
-                            <li class="tm-list-group-item">
-                                Sit amet aliquam lorem efficitur
-                            </li>
-                            <li class="tm-list-group-item">
-                                Pellentesque auctor urna nunc
-                            </li>
-                            <li class="tm-list-group-item">
-                                Sit amet aliquam lorem efficitur
-                            </li>
-                        </ol>
-                    </div>
-                </div>
-                <div class="tm-col tm-col-big">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Calendar</h2>
-                        <div id="calendar"></div>
-                        <div class="row mt-4">
-                            <div class="col-12 text-right">
-                                <a href="#" class="tm-link-black">View Schedules</a>
-                            </div>
-                        </div>
+// Get role statistics
+$roleStatistics = $userController->getRoleStatistics();
+?>
 
-                    </div>
-                </div>
-                <div class="tm-col tm-col-small">
-                    <div class="bg-white tm-block h-100">
-                        <h2 class="tm-block-title">Upcoming Tasks</h2>
-                        <ol class="tm-list-group">
-                            <li class="tm-list-group-item">List of tasks</li>
-                            <li class="tm-list-group-item">Lorem ipsum doloe</li>
-                            <li class="tm-list-group-item">Read reports</li>
-                            <li class="tm-list-group-item">Write email</li>
-                            
-                            <li class="tm-list-group-item">Call customers</li>
-                            <li class="tm-list-group-item">Go to meeting</li>
-                            <li class="tm-list-group-item">Weekly plan</li>
-                            <li class="tm-list-group-item">Ask for feedback</li>
-                            
-                            <li class="tm-list-group-item">Meet Supervisor</li>
-                            <li class="tm-list-group-item">Company trip</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Statistics</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<br><br><br><br>
+<body>
+    <h2 class="tm-block-title">Nombre d'utilisateur</h2>
 
-            <div class="row tm-content-row tm-mt-big">
-                <div class="col-xl-8 col-lg-12 tm-md-12 tm-sm-12 tm-col">
-                    <div class="bg-white tm-block h-100">
-                        <div class="row">
-                            <div class="col-md-8 col-sm-12">
-                                <h2 class="tm-block-title d-inline-block">Ordonnance</h2>
+    <!-- Canvas to render the bar chart -->
+    <canvas id="roleChart" width="400" height="200"></canvas>
 
-                            </div>
-                            <div class="col-md-4 col-sm-12 text-right">
-                                <a href="add-product.html" class="btn btn-small btn-primary">Modifier</a>
-                            </div>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-hover table-striped tm-table-striped-even mt-3">
-                                <thead>
-                                    <tr class="tm-bg-gray">
-                                        <th scope="col">&nbsp;</th>
-                                        <th scope="col">Num</th>
-                                        <th scope="col" class="text-center">NomMed</th>
-                                        <th scope="col" class="text-center">Dosage</th>
-                                        <th scope="col">Durée</th>
-                                        <th scope="col">Rq</th>
-                                        <th scope="col">&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td> 
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">
-                                            <input type="checkbox" aria-label="Checkbox">
-                                        </th>
-                                        <td class="tm-product-name"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td></td> 
-                                        <td></td>
-                                        <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+    <script>
+        // PHP data to JavaScript
+        var roleData = <?php echo json_encode($roleStatistics); ?>;
 
-                        <div class="tm-table-mt tm-table-actions-row">
-                            <div class="tm-table-actions-col-left">
-                                <button class="btn btn-danger">Supprimer</button>
-                            </div>
-                          <!--  <div class="tm-table-actions-col-right">
-                                <span class="tm-pagination-label">Page</span>
-                                <nav aria-label="Page navigation" class="d-inline-block">
-                                    <ul class="pagination tm-pagination">
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <span class="tm-dots d-block">...</span>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">13</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">14</a></li>
-                                    </ul>
-                                </nav>
-                            </div>-->
-                        </div>
-                    </div>
-                </div>
-            </div>
+        // Chart.js
+        var ctx = document.getElementById('roleChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(roleData),
+                datasets: [{
+                    label: 'Role Percentage',
+                    data: Object.values(roleData),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
+    </div>
+                
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             <footer class="row tm-mt-small">
                 <div class="col-12 font-weight-light">
                     <p class="d-inline-block tm-bg-black text-white py-2 px-4">
