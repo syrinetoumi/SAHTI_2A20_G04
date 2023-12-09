@@ -9,7 +9,7 @@ class config
         if (!isset(self::$pdo)) {
             try {
                 self::$pdo = new PDO(
-                    'mysql:host=localhost;dbname=projetweb1',
+                    'mysql:host=localhost;dbname=programme',
                     'root',
                     '',
                     [
@@ -25,12 +25,6 @@ class config
         return self::$pdo;
     }
 }
-
-
-
-
-
-
 
 
 config::getConnexion();
